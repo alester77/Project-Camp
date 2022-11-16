@@ -1,0 +1,39 @@
+:root {
+    --main-page-background-color: white;
+    }
+    
+  body {
+    height: 100%;
+    margin: 5px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    }
+    
+  h1 {
+    font-size: 35px;
+    font-weight: bold;
+    }
+    
+  h2 {
+    font-size: 25px;
+    font-weight: bold;
+    }
+    
+  header, footer {
+    text-align: center;
+    padding: 10px;
+    }
+    
+  @media (max-width: 690px) {
+    body {
+      margin: 5px;
+      padding: 10px;
+      }
+    }
+    
+  @media (max-width: 500px) {
+    body {
+      margin: 0px;
+      padding: 5 px;
+      }
+    }

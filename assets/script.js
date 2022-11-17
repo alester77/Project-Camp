@@ -45,4 +45,15 @@ function setUpMap (center) {
     center: center,
     zoom: 10
   })
+
+    // this adds little nav buttons to the top
+  const nav = new mapboxgl.NavigationControl();
+  map.addControl(nav);
+
+  const directions = new MapboxDirections({
+    accessToken: mapboxgl.accessToken
+   
+  });
+
+  map.addControl(directions, "top-left");
 }

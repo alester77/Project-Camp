@@ -28,6 +28,7 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   enabledHighAccuracy: true
 })
 
+// HEY TODD, LOOK AT ME :)
 function successLocation(position) {
 console.log(position);
 setUpMap([position.coords.longitude, position.coords.latitude]);

@@ -119,6 +119,10 @@ nav ul li a:hover {
   width: 100%;
   position: fixed;
 }
+#datepicker{
+    display: flex;
+    justify-content: right;
+  }
 
 /* { Todd's CSS
 

@@ -29,8 +29,10 @@ h2 {
 
 header,
 footer {
+  color: white;
   text-align: center;
   padding: 10px;
+  margin: 30px;
 }
 .header- {
   margin: -20px;
@@ -94,6 +96,7 @@ nav ul li a:hover {
 .map {
   display: flex;
   justify-content: right;
+  margin: 30px;
 }
 #map {
   display: flex;
@@ -124,7 +127,112 @@ nav ul li a:hover {
     justify-content: right;
   }
 
-/* { Todd's CSS
+/* CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) */
 
+#campsiteFetchResponseDataDisplayArea {
+  height: fit-content;
+  padding: 30px;
+  background-color: rgb(224, 241, 251);  /* sky blue */
+  border: 1px solid black;
+}
 
-} */
+#campsiteFetchResponseDataDisplayArea #campsiteDisplayAreaTitleSection {
+  font-size: 30px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  padding: 0px;
+}
+
+#recordsListNavigationBarSection {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  background-color: darkblue;
+}
+
+#campsiteRecordsList {
+  margin: 30px;
+  padding: 0px;
+  background-color: lightgray;
+  border: 10px solid rgb(169, 110, 0);
+  }
+
+.campsiteRecord {
+  margin: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  background-color: lightgray;
+  border-top: 10px solid rgb(169, 110, 0);
+  }
+
+.campsiteRecordContent, 
+.campsiteRecordContent h1, 
+.campsiteRecordContent h2, 
+.campsiteRecordContent p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+  background-color: lightgray;
+  }
+
+.campsiteRecordName {
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-bottom: 0px;
+  text-align: center;
+  background-color: lightgreen;
+  border: 1px solid gray;
+}
+
+.campsiteRecordPictures {
+  text-align: center;
+  margin: 30px;
+  padding: 10px;
+  height: fit-content;
+  background-color: white;
+  border: 10px solid gray;
+}
+
+.campsiteRecordLocation {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 10px;
+  height: fit-content;
+  background-color: lightyellow;
+  border: 1px solid gray;
+}
+
+.campsiteRecordSeparator {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  height: fit-content;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: darkblue;
+}
+/* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
+

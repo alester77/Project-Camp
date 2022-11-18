@@ -21,13 +21,15 @@
 <body>
   <div id="ideaNav"></div>
   <img id="backroundimage" src="./assets/images/Screenshot (1).png" alt="image of nature">
-  <div id="body">
+  <div id="main">
     <h1>Project-Camp</h1>
     <h2 id="response-text">Campsite API Query Content</h2>
     <p>query data example</p>  
     <div class="map">
+      
     <!-- Information to display map from map box-->
       <div id='map' style='width: 400px; height: 300px;'></div>
+      <p>Date: <input type="text" id="datepicker"></p>
     </div>
   </div>
   <script
@@ -37,4 +39,13 @@
     ></script>
   <script src="./assets/script.js"></script>
 </body>
+<!--date picker through jquery ui-->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
 </html>

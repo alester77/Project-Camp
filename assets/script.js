@@ -5,7 +5,8 @@ var campLongitude = null
 var campLatitude = null
 // var responseText = document.getElementById('response-text');
 
-document.querySelector(".btn-show").addEventListener("click", campInfo);
+//Can fix this next time
+// document.querySelector(".btn-show").addEventListener("click", campInfo);
 
 function getApi(requestUrl) {
   fetch(requestUrl)

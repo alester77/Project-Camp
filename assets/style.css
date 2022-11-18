@@ -46,13 +46,17 @@
         border: solid 4px;
         border-color: black;
     }
+    #datepicker{
+      display: flex;
+      justify-content: right;
+    }
     #ideaNav{
         height: 40px;
         width: 100%;
         background-color: rgb(12, 96, 12);
         box-shadow: 0px 10px 10px rgb(57, 30, 179) inset;
     }
-    #body{
+    #main{
         border: 1px solid;
         border-color: black;
         padding: 20px;

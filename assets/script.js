@@ -1,8 +1,11 @@
 // var requestUrl = 'https://ridb.recreation.gov/api/v1/campsites?&apikey=0805c920-ab89-46c8-b485-9b22b9515693';
 var key = "apikey=0805c920-ab89-46c8-b485-9b22b9515693"
 var requestUrl = 'https://ridb.recreation.gov/api/v1/facilities?query=camp&limit=50&offset=0&state=CO&radius=9.75&apikey=0805c920-ab89-46c8-b485-9b22b9515693';
-
+var campLongitude = null
+var campLatitude = null
 // var responseText = document.getElementById('response-text');
+
+document.querySelector(".btn-show").addEventListener("click", campInfo);
 
 function getApi(requestUrl) {
   fetch(requestUrl)
@@ -19,6 +22,10 @@ function getApi(requestUrl) {
 
 getApi(requestUrl);
 
+// Todd add code here
+function campInfo() {
+
+}
 
 // Map box 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxlc3Rlcjc3IiwiYSI6ImNsYWtpcHBqcTBoMXAzb281MjFlbnh1MTgifQ.CrtkBGN16fbxAobQEpAXdQ';

@@ -1,0 +1,126 @@
+:root {
+  --main-page-background-color: white;
+}
+
+body {
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-image: url(./images/background-image2.jpg);
+  background-size: cover;
+}
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+  font-family: "Alfa Slab One", cursive;
+  color: forestgreen;
+  -webkit-text-stroke: 1px black;
+
+}
+h1 span {
+    color: blue;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: bold;
+  color: lightgrey;
+  -webkit-text-stroke: 1px blue;
+}
+
+header,
+footer {
+  text-align: center;
+  padding: 10px;
+}
+.header- {
+  margin: -20px;
+  margin-top: 10px;
+  padding: 0px;
+}
+/* Navigation Bar Header */
+header nav {
+  display: flex;
+  flex-direction: row;
+  padding-block: 1px;
+  width: 100%;
+  justify-content: center;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-left: 8%;
+  padding-right: 8%;
+  font-size: 25px;
+  
+}
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 25px;
+}
+nav ul li a {
+  color: blue;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: capitalize;
+  -webkit-text-stroke: 1px black;
+}
+nav ul li a:hover {
+  color: forestgreen;
+  transition: 0.4s;
+}
+
+.nav-bar:hover {
+  color: white;
+}
+
+@media (max-width: 690px) {
+  body {
+    margin: 5px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    margin: 0px;
+    padding: 5 px;
+  }
+}
+.map {
+  display: flex;
+  justify-content: right;
+}
+#map {
+  display: flex;
+  border-radius: 25px;
+  border: solid 4px;
+  border-color: black;
+}
+#ideaNav {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(12, 96, 12);
+  box-shadow: 0px 10px 10px rgb(57, 30, 179) inset;
+}
+#body {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 0 60px;
+}
+#backgroundimage {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+/* { Todd's CSS
+
+
+} */

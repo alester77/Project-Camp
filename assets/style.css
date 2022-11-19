@@ -167,6 +167,7 @@ nav ul li a:hover {
   padding-bottom: 0px;
   background-color: lightgray;
   border-top: 10px solid rgb(169, 110, 0);
+  overflow-x: hidden;
   }
 
 .campsiteRecordContent, 

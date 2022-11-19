@@ -67,3 +67,29 @@ function setUpMap (center) {
   map.addControl(directions, "top-left");
 }
 
+//datepicker function, works when the 
+// $( function() {
+//   $( ".datepicker" ).datepicker();
+//   $( ".datepicker" ).datepicker( "option", "minDate", new Date() );
+// } );
+// var fin = document.getElementsByClassName("datepicker")
+// function printDatePicker(){
+//   var tester = document.getElementById("tester")
+//   var start = document.createElement("input")
+//   var end = document.createElement("input")
+//   console.log(start)
+//   start.setAttribute("type","text")
+//   start.setAttribute("placeholder", "Start Date")
+//   start.classList.add("datepicker")
+//   tester.appendChild(start) //where you want the dates to appear
+//   end.setAttribute("type","text")
+//   end.setAttribute("placeholder", "End Date")
+//   end.classList.add("datepicker")
+//   tester.appendChild(end) //where you want the dates to appear
+// }
+// printDatePicker()
+// function tester3(){
+//   console.log(fin.innerHTML)
+// }
+
+// document.getElementById("tester2").addEventListener("click", printDatePicker)

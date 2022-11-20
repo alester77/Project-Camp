@@ -26,6 +26,11 @@ var data = null;
 var campsiteFetchResponseDataDisplayArea = document.getElementById("campsiteFetchResponseDataDisplayArea");
 var campsiteRecordsList = document.getElementById("campsiteRecordsList");
 //
+//fetch api for weather, lat being latitude, lon being longitude and cnt being the number of days for forcasting MAXIMUM OF 16 DAYS
+var requestWeatherUrl = "api.openweathermap.org/data/2.5/forecast/daily?lat="+campLatitude+"&lon="+campLongitude+"&cnt="+10+"&appid="+weatherApiKey
+var requestWeatherUrlTest = "api.openweathermap.org/data/2.5/forecast/daily?lat=-104.99&lon=39.74&cnt=10&appid="+weatherApiKey
+var weatherApiKey = "4010f19181a054df4e43fad094631122"
+//
 // the API fetch-transmit function ahd the API response-process functions
 function getApi(requestUrl) {
   fetch(requestUrl)
@@ -209,30 +214,76 @@ function setUpMap (center) {
 
   map.addControl(directions, "top-left");
 }
-
-//datepicker function, works when the 
+// var startDate = []
+// var endDate = []
+// var daysBetweenDates = []
+// //datepicker function, does not work with event listener but can be called with normal function
 // $( function() {
-//   $( ".datepicker" ).datepicker();
-//   $( ".datepicker" ).datepicker( "option", "minDate", new Date() );
+//   $( ".firstdatepicker" ).datepicker({
+//     minDate: new Date(),
+//     autoSize: true,
+//     onClose: function (selectedDate){
+//       $(".seconddatepicker").datepicker("option", "minDate", selectedDate);
+//       startDate.pop(selectedDate);
+//       startDate.push(selectedDate);
+      
+//     } 
+//   });
 // } );
-// var fin = document.getElementsByClassName("datepicker")
+
+// $( function() {
+//   $( ".seconddatepicker" ).datepicker({
+//     autoSize: true,
+//     onClose: function(selectedDate){
+//       endDate.pop(selectedDate)
+//       endDate.push(selectedDate)
+//     }
+//   });
+// } );
+
 // function printDatePicker(){
-//   var tester = document.getElementById("tester")
+//   var tester = document.getElementById("tester")//where you want the dates to appear
 //   var start = document.createElement("input")
 //   var end = document.createElement("input")
 //   console.log(start)
 //   start.setAttribute("type","text")
 //   start.setAttribute("placeholder", "Start Date")
-//   start.classList.add("datepicker")
+//   start.setAttribute("readonly", true)
+//   start.classList.add("firstdatepicker")
 //   tester.appendChild(start) //where you want the dates to appear
 //   end.setAttribute("type","text")
 //   end.setAttribute("placeholder", "End Date")
-//   end.classList.add("datepicker")
+//   end.setAttribute("readonly", true)
+//   end.classList.add("seconddatepicker")
 //   tester.appendChild(end) //where you want the dates to appear
 // }
+
 // printDatePicker()
-// function tester3(){
-//   console.log(fin.innerHTML)
+
+// //set this function to an event listener button after dates are confirmed to return days between
+// function returnDateDiffInDays(){
+// console.log(startDate)
+// console.log(endDate)
+// var date1 = new Date (startDate[0])
+// var date2 = new Date (endDate[0])
+// var miliseconds = date2.getTime() - date1.getTime()
+// var days = miliseconds/ (1000 * 3600 * 24)
+// daysBetweenDates.pop(days)
+// daysBetweenDates.push(days)
 // }
 
-// document.getElementById("tester2").addEventListener("click", printDatePicker)
+//document.getElementById("tester2").addEventListener("click", returnDateDiffInDays) //click the good button and it will populate the days between array
+
+//api.  fetch(requestUrl)
+// weather API test function
+//  function getWeatherApi(requestWeatherUrlTest) {
+//    fetch(requestWeatherUrlTest)
+//      .then(function (response) {
+//          if (response.status === 400) {
+//            campsiteRecordsList.textContent = "FETCH ERROR: " + response.status;
+//            console.log(response);
+//         }
+//       return response.json();
+//   }) .then(function(data){
+//     console.log(data)});
+//   }

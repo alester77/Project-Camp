@@ -39,6 +39,33 @@ footer {
   margin-top: 10px;
   padding: 0px;
 }
+
+/* buttons */
+#mapButton {
+  color: white;
+  width: 350px;
+  padding: 10px;
+  margin: 10px;
+  height: 200px;
+  text-align: center;
+  text-decoration: solid;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: forestgreen;
+  font-size: 45px;
+  margin-right: 350px;
+  margin-top: 250px;
+  -webkit-text-stroke: 1px black;
+
+}
+
+.sites{
+  text-align: center;
+  border: 5px solid black;
+  margin: 10px;
+  padding: 10px;
+  font-size: 50px;
+  color: white;
+}
 /* Navigation Bar Header */
 header nav {
   display: flex;

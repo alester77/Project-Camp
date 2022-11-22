@@ -223,6 +223,7 @@ function setUpMap (center) {
 //     minDate: new Date(),
 //     autoSize: true,
 //     onClose: function (selectedDate){
+//       //document.getElementsByClassName("seconddatepicker").setAttribute("disabled", false),
 //       $(".seconddatepicker").datepicker("option", "minDate", selectedDate);
 //       startDate.pop(selectedDate);
 //       startDate.push(selectedDate);
@@ -230,7 +231,6 @@ function setUpMap (center) {
 //     } 
 //   });
 // } );
-
 // $( function() {
 //   $( ".seconddatepicker" ).datepicker({
 //     autoSize: true,
@@ -238,11 +238,12 @@ function setUpMap (center) {
 //       endDate.pop(selectedDate)
 //       endDate.push(selectedDate)
 //     }
+    
 //   });
 // } );
 
 // function printDatePicker(){
-//   var tester = document.getElementById("tester")//where you want the dates to appear
+//   var tester = document.getElementById("unique")//where you want the dates to appear
 //   var start = document.createElement("input")
 //   var end = document.createElement("input")
 //   console.log(start)

@@ -185,10 +185,42 @@ nav ul li a:hover {
   justify-content: right;
 }
 
+
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+
+@media (max-width: 690px) {
+  body {
+    margin: 5px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    margin: 0px;
+    padding: 5 px;
+  }
+}
+
+
 /* CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) */
 
+
+#generateCampsiteInformationRecordListButtonSection { 
+  /* the button that is on the main page; not on the record list */
+  text-align: center;
+}
+
+#generateCampsiteInformationRecordListButton,
+#hideCampsiteRecordListDisplayAreaButton {  /* the button that is on the main page; not on the record list */
+  height: 50px;
+  width: 70%;
+  padding: 10px;
+  border: 2px double orange;
+  border-radius: 3px;
+}
+
 #campsiteFetchResponseDataDisplayArea {
-  height: fit-content;
   padding: 30px;
   background-color: rgb(224, 241, 251); /* sky blue */
   border: 1px solid black;
@@ -282,7 +314,6 @@ nav ul li a:hover {
   font-weight: bold;
   text-align: center;
   height: fit-content;
-  width: 100%;
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 10px;
@@ -293,6 +324,7 @@ nav ul li a:hover {
   padding-bottom: 10px;
   background-color: darkblue;
 }
+
 
 /* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
 
@@ -337,3 +369,13 @@ footer {
   color: white;
   transition: 0.4s;
 }
+
+
+#generateADifferentCampsiteListButton a:link, 
+a:visited, a:hover, a:active {
+  color: white;
+  text-decoration-line: none;
+}
+
+/* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
+

@@ -44,17 +44,6 @@ var campsiteRecordsNameQuerySearchInputField = "";
 var campsiteRecordsNameQuerySearchInputFieldInput = "";
 var campsiteRecordsNameQueryButton = null;
 var campsiteRecordsListSearchButton = null;
-var campsiteInformationRecordsDisplaySections = null;
-  // a querySelectorAll object array for keeping track of the entire list of current queried-for campsite records
-var campsiteInformationRecordDisplaySectionButtons = null;
-  // a querySelectorAll object array for keeping track of the entire list of current queried-for campsite records
-//
-// Query for and fetch the necessary campsite data.
-goFetchAndProcessAPIResponseCampsiteInformation();
-// test array record content
-//window.alert(campsitesPrimaryInformation.length);
-//for (alertLoopIndex = 0; alertLoopIndex < 10; alertLoopIndex++) {
-//  window.alert(campsitesPrimaryInformation[alertLoopIndex].toString());}
 
 
 ///////////////////////////////////////////////
@@ -65,17 +54,26 @@ goFetchAndProcessAPIResponseCampsiteInformation();
 
 
 // the main starting button that is at the top of the entire campsite list display area upon application start
-var generateNewCampsiteRecordListButton = document.getElementById("generateCampsiteInformationRecordListButton");
-generateNewCampsiteRecordListButton.visibility = "visible";
-// the campsite list display area upon application start
+var generateCampsiteRecordListButton = document.getElementById("generateCampsiteInformationRecordListButton");
+// the title of the display area that is for the listing of all of the searched-for campsite records
+var campsiteListTitleSection = document.getElementById("campsiteDisplayAreaTitleSection");
+campsiteListTitleSection.style.height = "1px";
+var campsiteListTitle = document.getElementById("campsiteDisplayAreaTitle");
+campsiteListTitle.innerHTML = "Detail Information About Searched-For Colorado Campsites";
+campsiteListTitle.style.visibility = "hidden";
+var campsiteRecordQuerySearchCriteria = document.getElementById("campsiteRecordListQueryCriteriaStatusField");
+campsiteRecordQuerySearchCriteria.innerHTML = "( CURRENT SEARCH QUERY CRITERIA: ** Only Some Example Campsite Information Records **  )";
+campsiteRecordQuerySearchCriteria.style.visibility = "hidden";
+generateCampsiteRecordListButton.style.display = "inline";
+// the campsite list display area upon application start; initially hidden
+// the area for the record list that is generated
 var campsiteRecordListDisplayArea = document.getElementById("campsiteRecordsList");
-campsiteRecordsListDisplayArea.visibility = "hidden";
-campsiteRecordsListDisplayArea.height = "1px";
-var hideCampsiteRecordListDisplayAreaButton = document.getElementById("hideCampsiteRecordListDisplayAreaButton");
-hideCampsiteRecordListDisplayAreaButton.visibility = "hidden";
-hideCampsiteRecordListDisplayAreaButton.height = "1px";
-//
-hideCampsiteRecordListDisplayArea();
+campsiteRecordListDisplayArea.style.display = "none";
+//campsiteRecordListDisplayArea.style.height = "1px";
+var hideCampsiteRecordListAreaButton = document.getElementById("hideCampsiteRecordListDisplayAreaButton");
+// Initially hide the campsite record list display area so it can be displayed only when the user wants to
+// generate a campsite record list.
+hideCampsiteRecordListAreaButton.style.display = "none";
 
 
 ///////////////////////////////////////////////
@@ -100,49 +98,64 @@ hideCampsiteRecordListDisplayArea();
 
 
 generateCampsiteRecordListButton.addEventListener("click", function() {
+  // the section title; displayed only when the list is displayed
+  campsiteListTitleSection.style.height = "auto";
+  campsiteListTitle.style.visibility = "visible";
+  campsiteRecordQuerySearchCriteria.style.visibility = "visible";
   // the main starting button that is at the top of the entire campsite list display area upon application start
-  generateCampsiteRecordListButton.visibility = "hidden";
-  generateCampsiteRecordListButton.height = "1px";
+  generateCampsiteRecordListButton.style.display = "none";
   // the campsite list display area upon application start
-  campsiteRecordsListDisplayArea.visibility = "visible";
-  campsiteRecordsListDisplayArea.height = "auto";
-  // to replace the GenerateNewCampsiteRecordListButton when it is hidden
-  hideCampsiteRecordListDisplayAreaButton.visibility = "visible";
-  hideCampsiteRecordListDisplayAreaButton.height = "auto";
+  campsiteRecordListDisplayArea.style.display = "inline";
+  campsiteRecordListDisplayArea.height = "auto";
+  // to replace the GenerateCampsiteRecordListButton when it is hidden
+  hideCampsiteRecordListAreaButton.style.display = "inline";
+  hideCampsiteRecordListAreaButton.height = "auto";
+  //
+  if (newCampsiteRecordListIsGenerated == false) {
+    goFetchAndProcessAPIResponseCampsiteInformation();
+  }
 });
 
 
-function hideCampsiteRecordListDisplayArea() {
-  generateCampsiteRecordListButton.visibility = "visible";
+hideCampsiteRecordListAreaButton.addEventListener("click", function() {
+  // the section title; displayed only when the list is displayed
+  campsiteListTitleSection.style.height = "auto";
+  campsiteListTitle.style.visibility = "hidden";
+  campsiteRecordQuerySearchCriteria.style.visibility = "hidden";
+  generateCampsiteRecordListButton.style.display = "inline";
   generateCampsiteRecordListButton.height = "auto";
   // the campsite list display area upon application start
-  campsiteRecordsListDisplayArea.visibility = "hidden";
-  campsiteRecordsListDisplayArea.height = "1px";
+  campsiteRecordListDisplayArea.style.display = "none";
+  //campsiteRecordListDisplayArea.style.height = "1px";
+  campsiteListTitleSection.style.height = "1px";
   //
-  hideCampsiteRecordListDisplayAreaButton.visibility = "hidden";
-  hideCampsiteRecordListDisplayAreaButton.height = "1px";
-}
+  hideCampsiteRecordListAreaButton.style.display = "none";
+});
 
 
 function toggleDisplayOfCampsiteRecordListDisplayArea ()  {
-  if (campsiteRecordsListDisplayArea.visibility == "visible") {
-    campsiteRecordsListDisplayArea.visibility = "hidden";
+  if (campsiteRecordListDisplayArea.style.display == "inline") {
+    campsiteRecordListDisplayArea.style.display = "none";
+    //campsiteRecordListDisplayArea.style.height = "1px";
+    campsiteListTitleSection.style.height = "1px";
+    campsiteListTitle.style.visibility = "hidden";
+    campsiteRecordQuerySearchCriteria.style.visibility = "hidden";
   }
   else {
-    campsiteRecordsListDisplayArea.visibility = "visible";
+    campsiteRecordListDisplayArea.style.display = "inline";
+    campsiteListTitleSection.style.height = "auto";
+    campsiteListTitle.style.visibility = "visible";
+    campsiteRecordQuerySearchCriteria.style.visibility = "visible";
   }
 }
 
 
 // a supplemental service function for the "Generate a New Campsite List" Button
 function GenerateNewCampsiteListProcessing() {
-
-  // FROM THE MAIN SCREEN UPON PAGE LOAD:
-
   //
-
   // FROM THE RECORD NAVIGATION PANEL:
   //
+  // newCampsiteRecordListIsGenerated = false;
   // an event listener that is for the "Generate a New Campsite List" button
   // Set the visibility attribute of the list area section.
   // newCampsiteRecordIsSelected = false;
@@ -163,18 +176,18 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber) {
   // to the global-available status/access campsite information array:
   // theCurrentSelectedCampsiteRecordInformation = [campsiteIDNumber, campsiteName, campsiteIDHTML, 
   // campsitePhoneNumber, campsiteAddress, campsiteEmailAddress, campsiteLatitude, campsiteLongitude, campsiteZIPCode];
-  for (campsiteRecordLoop = 0; campsiteRecordLoop < theCurrentSelectedCampsiteRecordInformation.length; 
-    campsiteRecordLoop++) {
-    theCurrentSelectedCampsiteRecordInformation[campsiteRecordLoop] = 
-      campsitesPrimaryInformation[passedCampsiteRecordIDNumber];
   newCampsiteRecordIsSelected = true;
   newCampsiteRecordListIsGenerated = false;
+  // Locate/Copy/Post the selected campsite record in the global-available record information array.
+  theCurrentSelectedCampsiteRecordInformation = campsitesPrimaryInformation[passedCampsiteRecordIDNumber];
+  // Save a copy of the selected record to a global variable and to local storage for later viewing.
   localStorage.setItem("ProjectCampLastSelectedCampsiteRecord", 
     JSON.stringify(theCurrentSelectedCampsiteRecordInformation));
-  }
   // test record content:
-  window.alert(theCurrentSelectedCampsiteRecordInformation.toString());
+  window.alert("Current Selected Record: " + theCurrentSelectedCampsiteRecordInformation.toString());
+  window.alert("Current Selected Record: " + campsitesPrimaryInformation[passedCampsiteRecordIDNumber]);
   window.alert(
+    "Last Listed Record:" + "\n" + 
     "campsiteIDNumber: " + campsiteIDNumber + "\n" + 
     "campsiteName: " + campsiteName + "\n" + 
     "campsiteIDHTML: " + campsiteIDHTML + "\n" + 
@@ -214,8 +227,9 @@ function goFetchAndProcessAPIResponseCampsiteInformation() {
   var campsiteRecordsList = document.getElementById("campsiteRecordsList");
   var newCampsiteRecord = null;
   var newCampsiteRecordContent = null;
-  var newCampsiteRecordSeparator = null;
+  var newCampsiteRecordSeparatorSection = null;
   var campsiteRecordObjectFieldProcessing = null;
+  newCampsiteRecordListIsGenerated = true;
   //
   //
   // NOTE: CAMPSITE API FIELDS THAT ARE USED:
@@ -240,15 +254,6 @@ function goFetchAndProcessAPIResponseCampsiteInformation() {
   // /Media pictures/videos (secondary database)
   //
   //
-  // the title of the display area that is for the listing of all of the searched-for campsite records
-  newDisplayAreaTitleSection = document.createElement("div");
-  newDisplayAreaTitleSection.id = "campsiteDisplayAreaTitleSection";
-  newDisplayAreaTitleSection.innerHTML = "<p>" + "Detail Information About Searched-For Colorado Campsites" + "</p>";
-  newDisplayAreaTitleSection.innerHTML = newDisplayAreaTitleSection.innerHTML + "<p>" + 
-    "<span style='font-size: 15px' id='currentSearchQueryCriteria'>" + 
-    "( CURRENT SEARCH QUERY CRITERIA: ** (Only Some Example Campsite Information Records) **  )" + "</span>" + "</p>";
-  campsiteFetchResponseDataDisplayArea.appendChild(newDisplayAreaTitleSection);
-  $("#campsiteDisplayAreaTitleSection").insertBefore("#campsiteRecordsList");
   // the main navigation bar area of the records list display area
   newMainRecordsListNavigationBarArea = document.createElement("div");
   newMainRecordsListNavigationBarArea.id = "recordsListNavigationBarSection";
@@ -310,7 +315,7 @@ function goFetchAndProcessAPIResponseCampsiteInformation() {
     newCampsiteRecordContent.className = "campsiteRecordName";
     campsiteRecordObjectFieldProcessing = (campsiteFetchResponseData[fetchDataLoopIndex]).FacilityName;
     campsiteName = (campsiteFetchResponseData[fetchDataLoopIndex]).FacilityName;
-    newCampsiteRecordContent.id = "[" + fetchDataLoopIndex + "]" + campsiteName.trim();
+    newCampsiteRecordContent.id = "[" + fetchDataLoopIndex + "]" + "_" + ((campsiteName.trim()).replace(" ", "_"));
     campsiteIDHTML = newCampsiteRecordContent.id;
     newCampsiteRecordContent.innerHTML = "<p>" + campsiteRecordObjectFieldProcessing + "</p>";
     newCampsiteRecord.appendChild(newCampsiteRecordContent);
@@ -335,7 +340,7 @@ function goFetchAndProcessAPIResponseCampsiteInformation() {
     //console.log("Image Error: " + campsiteRecordObjectFieldProcessing);
     // MINOR CORRECTION TO IMPORT-DATA ERROR (BROKEN/404 <IMG> ELEMENTS IN THE DESCRIPTION FIELD):
     // Step 1: Start_index = getIndex "<img";
-    processing_campsiteRecordObjectFieldProcessing = campsiteRecordObjectFieldProcessing.toUpperCase();
+    var processing_campsiteRecordObjectFieldProcessing = campsiteRecordObjectFieldProcessing.toUpperCase();
     startIndex = 0;
     while (processing_campsiteRecordObjectFieldProcessing.indexOf("<IMG", startIndex) != -1 ) { 
       // Step 2: End_index = getIndex "/>" after Step 1 Start_index;
@@ -484,7 +489,7 @@ function goFetchAndProcessAPIResponseCampsiteInformation() {
       // console.log(campsitesPrimaryInformation[this.id][6]); // "campsiteLatitude"
       // console.log(campsitesPrimaryInformation[this.id][7]); // "campsiteLongitude"
       setIdOfCurrentCampsiteRecordSelection(this.id);
-    })
+    });
     // the buttons of the main navigation area
     newCampsiteRecordSeparatorSectionButton = document.createElement("button");
     newCampsiteRecordSeparatorSectionButton.id = "generateADifferentCampsiteListButton";
@@ -521,8 +526,6 @@ function goFetchAndProcessAPIResponseCampsiteInformation() {
 
 
 // the basic API fetch-transmit function and data response-return function
-
-
 //fetch api for weather, lat being latitude, lon being longitude and cnt being the number of days for forcasting MAXIMUM OF 16 DAYS
 var requestWeatherUrl = "api.openweathermap.org/data/2.5/forecast/daily?lat="+campLatitude+"&lon="+campLongitude+"&cnt="+10+"&appid="+weatherApiKey
 var requestWeatherUrlTest = "api.openweathermap.org/data/2.5/forecast/daily?lat=-104.99&lon=39.74&cnt=10&appid="+weatherApiKey

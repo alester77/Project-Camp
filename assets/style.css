@@ -8,14 +8,15 @@ body {
   background-image: url(./images/background-image2.jpg);
   background-size: cover;
 }
+
 h1 {
   font-size: 35px;
   font-weight: bold;
   font-family: "Alfa Slab One", cursive;
   color: forestgreen;
   -webkit-text-stroke: 1px black;
-
 }
+
 h1 span {
     color: blue;
 }
@@ -34,8 +35,9 @@ footer {
   padding: 10px;
   margin: 30px;
 }
+
 .header- {
-  margin: -20px;
+  /*margin: -20px;*/
   margin-top: 10px;
   padding: 0px;
 }
@@ -55,7 +57,6 @@ footer {
   margin-right: 350px;
   margin-top: 250px;
   -webkit-text-stroke: 1px black;
-
 }
 
 .sites{
@@ -66,6 +67,7 @@ footer {
   font-size: 50px;
   color: white;
 }
+
 /* Navigation Bar Header */
 header nav {
   display: flex;
@@ -74,6 +76,7 @@ header nav {
   width: 100%;
   justify-content: center;
 }
+
 nav {
   display: flex;
   flex-direction: row;
@@ -88,8 +91,10 @@ nav {
 nav ul li {
   list-style-type: none;
   display: inline-block;
-  padding: 10px 25px;
+  /*padding: 10px 25px;*/
+  padding: 5px 15px;
 }
+
 nav ul li a {
   color: blue;
   padding: 10px;
@@ -98,6 +103,7 @@ nav ul li a {
   text-transform: capitalize;
   -webkit-text-stroke: 1px black;
 }
+
 nav ul li a:hover {
   color: forestgreen;
   transition: 0.4s;
@@ -117,38 +123,44 @@ nav ul li a:hover {
 @media (max-width: 500px) {
   body {
     margin: 0px;
-    padding: 5 px;
+    padding: 0 px;
   }
 }
+
 .map {
   display: flex;
   justify-content: right;
   margin: 30px;
 }
+
 #map {
   display: flex;
   border-radius: 25px;
   border: solid 4px;
   border-color: black;
 }
+
 #ideaNav {
   height: 40px;
   width: 100%;
   background-color: rgb(12, 96, 12);
   box-shadow: 0px 10px 10px rgb(57, 30, 179) inset;
 }
+
 #body {
   display: flex;
   flex-direction: column;
   padding: 20px;
   margin: 0 60px;
 }
+
 #backgroundimage {
   z-index: -1;
   height: 100%;
   width: 100%;
   position: fixed;
 }
+
 #datepicker{
     display: flex;
     justify-content: right;
@@ -185,8 +197,10 @@ nav ul li a:hover {
   height: 50px;
   width: 70%;
   padding: 10px;
+  border-bottom: 20px;
+  background-color: gray;
   border: 2px double orange;
-  border-radius: 3px;
+  border-radius: 7px;
 }
 
 #campsiteFetchResponseDataDisplayArea {
@@ -201,6 +215,7 @@ nav ul li a:hover {
   text-align: center;
   font-weight: bold;
   padding: 0px;
+  margin-top: 20px;
 }
 
 #recordsListNavigationBarSection {
@@ -209,13 +224,17 @@ nav ul li a:hover {
   font-weight: bold;
   padding: 20px;
   background-color: darkblue;
+  border-bottom: 10px solid rgb(169, 110, 0);
 }
 
 #campsiteRecordsList {
   margin: 30px;
   padding: 0px;
   background-color: lightgray;
-  border: 10px solid rgb(169, 110, 0);
+}
+
+#campsiteRecordListQueryCriteriaStatusField {
+  font-size: 15px;
 }
 
 .campsiteRecord {
@@ -225,7 +244,8 @@ nav ul li a:hover {
   padding-top: 10px;
   padding-bottom: 0px;
   background-color: lightgray;
-  border-top: 10px solid rgb(169, 110, 0);
+  border-left: 10px solid rgb(169, 110, 0);
+  border-right: 10px solid rgb(169, 110, 0);
   overflow-x: hidden;
 }
 
@@ -283,14 +303,15 @@ nav ul li a:hover {
   font-weight: bold;
   text-align: center;
   height: fit-content;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: -20px;
+  margin-right: -20px;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 10px;
   padding-bottom: 10px;
+  border: 10px solid rgb(169, 110, 0);
   background-color: darkblue;
 }
 

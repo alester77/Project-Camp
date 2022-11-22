@@ -1,4 +1,8 @@
 # Welcome to Project Camp!
+
+Link to deployed page: https://alester77.github.io/Project-Camp/
+Link to github repository: https://github.com/alester77/Project-Camp
+
 Our Mission: 
     
     As outdoor enthusiasts we wanted to create a one stop platform to find your next camping spot!

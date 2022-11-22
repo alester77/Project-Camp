@@ -51,8 +51,21 @@
 
       </div>
     </header>
-
+     
       <div id="ideaNav"></div>
+      <!--testing area for datepicker, it appears under bar, top of page-->
+      <!--<div id="tester"></div>
+      <div id="tester2">good</div>--> <!--click the good button to confirm dates and it will return diff between dates in days-->
+        <div class="map">
+
+          <div class = "mapButton">
+            <a href="#map"><button id = "mapButton">View Map</button></a>
+          </div>
+          <div class = "siteButton">
+            <a href="#sites"><button id = "mapButton">View Campsites</button></a>
+          </div>
+
+      <!--<div id="ideaNav"></div>-->
       
         <div class="map">
           <!-- Information to display map from map box-->
@@ -60,10 +73,31 @@
         </div>
       </div>
 
-    <footer> ( FOOTER SECTION FOR POSSIBLE INFORMATION DISPLAY OR/AND LINK FUNCTIONALITY )</footer>
+    <footer>
+    
+    </footer>
 
     <!-- CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) -->
     <div id="campsiteFetchResponseDataDisplayArea">
+      <h1 class="sites" id="sites"> Campsites! </h1>
+
+        <!-- the space that is for the "Generate Campsite Information Record List" button -->
+        <div id="generateCampsiteInformationRecordListButtonSection">
+          <button id="generateCampsiteInformationRecordListButton">
+            <h2>Generate Campsite Information Record List</h2></button>
+          <button id="hideCampsiteRecordListDisplayAreaButton">
+            <h2>Hide Campsite Information Record List</h2></button>
+        </div>
+
+        <!-- This section of the bottom section of the webpage is for some hidden status fields that are for the
+          processing of functions of the program. -->
+        <!-- -->
+        <!-- STATUS FIELDS FOR THE CAMPSITE RECORD PROCESS -->
+        <!-- <input id="campsiteRecordListProcessStatusDisplay" readonly visibility="hidden"> -->
+          <!-- for a possible future information display/access option -->
+        <!-- END: CAMPSITE RECORD PROCESS STATUS FIELDS SECTION -->
+        <!-- -->
+
       <div id="campsiteRecordsList">
         <!-- display area for campsite records-->
       </div>
@@ -81,6 +115,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+
 <script>
   $( function() {
     $( "#datepicker" ).datepicker();

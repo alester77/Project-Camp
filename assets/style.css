@@ -212,7 +212,6 @@ nav ul li a:hover {
 }
 
 
-
 /* MEDIA QUERIES FOR RESPONSIVENESS */
 
 @media (max-width: 690px) {
@@ -243,6 +242,7 @@ nav ul li a:hover {
   height: 50px;
   width: 70%;
   padding: 10px;
+  margin-bottom: 20px;
   border-bottom: 20px;
   background-color: gray;
   border: 2px double orange;
@@ -251,6 +251,7 @@ nav ul li a:hover {
 
 #campsiteFetchResponseDataDisplayArea {
   padding: 30px;
+  margin-bottom: 30px;
   background-color: rgb(224, 241, 251); /* sky blue */
   border: 1px solid black;
 }

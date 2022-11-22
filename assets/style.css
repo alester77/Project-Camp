@@ -85,23 +85,6 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
 }
-.map {
-  display: flex;
-  justify-content: center;
-  margin: 30px;
-}
-
-.sites {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  border: 5px solid black;
-  margin: 10px;
-  padding: 10px;
-  font-size: 50px;
-  color: white;
-  border-radius: 25px;
-}
 
 /* Navigation Bar Header */
 header nav {
@@ -122,6 +105,7 @@ nav {
   padding-right: 8%;
   font-size: 25px;
 }
+
 nav ul li {
   list-style-type: none;
   display: inline-block;
@@ -145,39 +129,6 @@ nav ul li a:hover {
 
 .nav-bar:hover {
   color: white;
-}
-
-@media (max-width: 690px) {
-  body {
-    margin: 5px;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 500px) {
-  body {
-    margin: 0px;
-    padding: 0 px;
-  }
-}
-
-.map {
-  display: flex;
-  justify-content: right;
-  margin: 30px;
-}
-
-/* .map {
-  display: inline-flex;
-  justify-content: right;
-  margin: 30px;
-} */
-
-#map {
-  display: flex;
-  border-radius: 25px;
-  border: solid 4px;
-  border-color: black;
 }
 
 #ideaNav {
@@ -211,25 +162,33 @@ nav ul li a:hover {
   justify-content: right;
 }
 
-
-/* MEDIA QUERIES FOR RESPONSIVENESS */
-
-@media (max-width: 690px) {
-  body {
-    margin: 5px;
-    padding: 10px;
-  }
+.map {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
 }
 
-@media (max-width: 500px) {
-  body {
-    margin: 0px;
-    padding: 5 px;
-  }
+#map {
+  display: flex;
+  border-radius: 25px;
+  border: solid 4px;
+  border-color: black;
+}
+
+.sites {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: 5px solid black;
+  margin: 10px;
+  padding: 10px;
+  font-size: 50px;
+  color: white;
+  border-radius: 25px;
 }
 
 
-/* CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) */
+/* START SECTION: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) */
 
 
 #generateCampsiteInformationRecordListButtonSection { 
@@ -272,6 +231,10 @@ nav ul li a:hover {
   padding: 20px;
   background-color: darkblue;
   border-bottom: 10px solid rgb(169, 110, 0);
+}
+
+#recordsListNavigationBarSection button {
+  border-radius: 7px;
 }
 
 #campsiteRecordsList {
@@ -362,6 +325,10 @@ nav ul li a:hover {
   background-color: darkblue;
 }
 
+.campsiteRecordSeparator button {
+  border-radius: 7px;
+}
+
 
 /* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
 
@@ -414,5 +381,20 @@ a:visited, a:hover, a:active {
   text-decoration-line: none;
 }
 
-/* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
 
+/* MEDIA QUERIES FOR RESPONSIVENESS */  /* These are only samples and they can be changed by anyone. */
+
+
+@media (max-width: 690px) {
+  body {
+    margin: 5px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+}

@@ -13,19 +13,7 @@
     />
     <link rel="stylesheet" href="./assets/reset.css" />
     <link rel="stylesheet" href="./assets/style.css" />
-    <!-- needed for mapbox map -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <!-- needed for mapbox directions -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
-      type="text/css"
-    />
+    
     <title>Project Camp</title>
     <!--google font-->
     <link
@@ -44,7 +32,7 @@
             <nav class="nav-bar">
               <ul>
                 <a href="#aboutus"><li>About Us</a></li></a>
-                <a href="#map"><li>View a Map</a></li></a>
+                <a href="/map.html"><li>View a Map</a></li></a>
                 <a href="#contact-us"><li>Contact Us</a></li></a>
               </ul>
             </nav>
@@ -60,19 +48,12 @@
         <div class="map">
 
           <div class = "mapButton">
-            <a href="#map"><button id = "mapButton">View Map</button></a>
+            <a href="/map.html"><button id = "mapButton">View Map</button></a>
           </div>
           <div class = "siteButton">
             <a href="#sites"><button id = "mapButton">View Campsites</button></a>
           </div>
-
-      <!--<div id="ideaNav"></div>-->
       
-        <div class="map">
-          <!-- Information to display map from map box-->
-          <div id="map" style="width: 750px; height: 650px"></div>
-        </div>
-      </div>
 
     <footer>
     

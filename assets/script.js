@@ -258,7 +258,8 @@ function goFetchAndProcessAPIResponseCampsiteInformation() {
   // the fields and buttons of the main navigation area
   newMainRecordsListNavigationBarAreaField = document.createElement("input");
   newMainRecordsListNavigationBarAreaField.id = "recordSearchCriteriaSpecificationField";
-  newMainRecordsListNavigationBarAreaField.value = "Type some search text for the next campsite list.";
+  //newMainRecordsListNavigationBarAreaField.value = "Type some search text for the next campsite list.";
+  newMainRecordsListNavigationBarAreaField.setAttribute ("placeholder", "Search for sites...")
   newMainRecordsListNavigationBarAreaField.style.width = "30%";
   newMainRecordsListNavigationBarAreaField.style.paddingLeft = "5px";
   newMainRecordsListNavigationBarAreaField.style.paddingRight = "5px";

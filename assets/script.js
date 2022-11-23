@@ -201,7 +201,7 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber) {
   //   "campsiteZIPCode: " + campsiteZIPCode);
   //////////////////////////////
   //Alexa map process
-  location.replace("../map.html");
+  location.replace("./map.html");
 }
 
 

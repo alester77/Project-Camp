@@ -1,3 +1,4 @@
+
 // getting Lat+Long from the array
 var campsiteRecordArray = JSON.parse(localStorage.getItem("ProjectCampLastSelectedCampsiteRecord"));
 var coorLong = campsiteRecordArray[7];

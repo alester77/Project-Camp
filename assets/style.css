@@ -14,11 +14,6 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
-/* .hero {
-  background-image: url(./images/background-image2.jpg);
-  background-size: cover;
-  background-position: center;
-} */
 
 h1 {
   font-size: 35px;
@@ -34,7 +29,6 @@ h1 span {
 h2 {
   font-size: 25px;
   font-weight: bold;
-  /* color: lightgrey; */
   -webkit-text-stroke: 1px blue;
 }
 
@@ -56,24 +50,26 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: white;
+  align-items: center;
+  color: blue;
   width: 350px;
-  /* max-width: 350px; */
   padding: 10px;
   margin: 10px;
   height: 75px;
-  text-align: center;
-  /* text-decoration: solid; */
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: forestgreen;
   font-size: 40px;
   margin-top: 50px;
   margin-bottom: 50px;
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 1.5px black;
   border-radius: 45px;
-  vertical-align: middle;
-  text-decoration: none;
   box-shadow: 0px 0px 20px 0px blue;
+  transition: 0.4s;
+}
+#mapButton:hover {
+  color: white;
+  transition: 0.3s;
+  transform: scale(1.08);
 }
 
 .buttons {
@@ -121,7 +117,9 @@ nav ul li {
   display: inline-block;
   padding: 10px 25px;
 }
-nav ul li a {
+
+.nav-bar li a {
+  font-size: 30px;
   color: blue;
   padding: 10px;
   text-decoration: none;
@@ -129,14 +127,12 @@ nav ul li a {
   text-transform: capitalize;
   -webkit-text-stroke: 1px black;
 }
-nav ul li a:hover {
+
+.nav-bar ul li a:hover {
   color: forestgreen;
   transition: 0.4s;
 }
 
-.nav-bar:hover {
-  color: white;
-}
 
 @media (max-width: 690px) {
   body {
@@ -151,11 +147,7 @@ nav ul li a:hover {
     padding: 5 px;
   }
 }
-/* .map {
-  display: inline-flex;
-  justify-content: right;
-  margin: 30px;
-} */
+
 #map {
   display: flex;
   border-radius: 25px;
@@ -185,7 +177,6 @@ nav ul li a:hover {
   justify-content: right;
 }
 
-
 /* MEDIA QUERIES FOR RESPONSIVENESS */
 
 @media (max-width: 690px) {
@@ -202,17 +193,16 @@ nav ul li a:hover {
   }
 }
 
-
 /* CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) */
 
-
-#generateCampsiteInformationRecordListButtonSection { 
+#generateCampsiteInformationRecordListButtonSection {
   /* the button that is on the main page; not on the record list */
   text-align: center;
 }
 
 #generateCampsiteInformationRecordListButton,
-#hideCampsiteRecordListDisplayAreaButton {  /* the button that is on the main page; not on the record list */
+#hideCampsiteRecordListDisplayAreaButton {
+  /* the button that is on the main page; not on the record list */
   height: 50px;
   width: 70%;
   padding: 10px;
@@ -222,7 +212,7 @@ nav ul li a:hover {
 
 #campsiteFetchResponseDataDisplayArea {
   padding: 30px;
-  background-color: rgb(224, 241, 251); /* sky blue */
+  background-color: rgb(224, 241, 251);
   border: 1px solid black;
 }
 
@@ -325,7 +315,6 @@ nav ul li a:hover {
   background-color: darkblue;
 }
 
-
 /* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
 
 #aboutus {
@@ -340,7 +329,6 @@ nav ul li a:hover {
   background-color: forestgreen;
 }
 
-/* Will need media query for section(s) below*/
 #contact-us {
   display: flex;
   justify-content: center;
@@ -361,8 +349,43 @@ footer {
   padding: 10px;
 }
 
+footer h2 {
+  display: flex;
+}
+
 #contacts {
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  footer ul li a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 750px) {
+  footer ul li a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
+@media (max-width: 500px) {
+  footer ul li a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 20px;
+  }
 }
 
 #contacts :hover {
@@ -370,12 +393,12 @@ footer {
   transition: 0.4s;
 }
 
-
-#generateADifferentCampsiteListButton a:link, 
-a:visited, a:hover, a:active {
+#generateADifferentCampsiteListButton a:link,
+a:visited,
+a:hover,
+a:active {
   color: white;
   text-decoration-line: none;
 }
 
 /* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
-

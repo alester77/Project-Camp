@@ -186,19 +186,22 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber) {
   localStorage.setItem("ProjectCampLastSelectedCampsiteRecord", 
     JSON.stringify(theCurrentSelectedCampsiteRecordInformation));
   // test record content:
-  window.alert("Current Selected Record: " + theCurrentSelectedCampsiteRecordInformation.toString());
-  window.alert("Current Selected Record: " + campsitesPrimaryInformation[passedCampsiteRecordIDNumber]);
-  window.alert(
-    "Last Listed Record:" + "\n" + 
-    "campsiteIDNumber: " + campsiteIDNumber + "\n" + 
-    "campsiteName: " + campsiteName + "\n" + 
-    "campsiteIDHTML: " + campsiteIDHTML + "\n" + 
-    "campsitePhoneNumber: " + campsitePhoneNumber + "\n" + 
-    "campsiteAddress: " + campsiteAddress + "\n" + 
-    "campsiteEmailAddress: " + campsiteEmailAddress + "\n" + 
-    "campsiteLatitude: " + campsiteLatitude + "\n" + 
-    "campsiteLongitude: " + campsiteLongitude + "\n" + 
-    "campsiteZIPCode: " + campsiteZIPCode);
+  // window.alert("Current Selected Record: " + theCurrentSelectedCampsiteRecordInformation.toString());
+  // window.alert("Current Selected Record: " + campsitesPrimaryInformation[passedCampsiteRecordIDNumber]);
+  // window.alert(
+  //   "Last Listed Record:" + "\n" + 
+  //   "campsiteIDNumber: " + campsiteIDNumber + "\n" + 
+  //   "campsiteName: " + campsiteName + "\n" + 
+  //   "campsiteIDHTML: " + campsiteIDHTML + "\n" + 
+  //   "campsitePhoneNumber: " + campsitePhoneNumber + "\n" + 
+  //   "campsiteAddress: " + campsiteAddress + "\n" + 
+  //   "campsiteEmailAddress: " + campsiteEmailAddress + "\n" + 
+  //   "campsiteLatitude: " + campsiteLatitude + "\n" + 
+  //   "campsiteLongitude: " + campsiteLongitude + "\n" + 
+  //   "campsiteZIPCode: " + campsiteZIPCode);
+  //////////////////////////////
+  //Alexa map process
+  location.replace("../map.html");
 }
 
 

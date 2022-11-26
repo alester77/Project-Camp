@@ -452,6 +452,7 @@ a:active {
   text-align: center;
   margin-bottom: 50px;
   font-size: 22px;
+  background-color: rgb(224, 241, 251);
 }
 #reservationsTitle{
   font-weight: bold;

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="Description" content="Enter your description here" />
+    <!-- 
+    <link rel="stylesheet" href="style.css" />
+    -->
+    <title>OpenWeather API Interface Resources</title>
+</head>
+
+<body style="background-color: lightblue">
+<!-- -->
+<header>
+
+</header>
+
+<div class="mainPageContainer">
+    <h1 style="text-align: center">Camping Trip Planning</h1>
+    <div class="sectionContainer">
+        <div class="sectionHeader">
+            <h2 style="text-align: center">Weather Forecast</h2>
+            <p style="text-align: center">(Based on Latitude and Longitude Coordinates)</p>
+            <p></p>
+            <p style="text-align: center">campsiteLocationLatitude: <input id="campsiteLocationLatitude"
+                value="39.742043"/></p> <!-- for Denver -->
+            <p style="text-align: center">campsiteLocationLongitude: <input id="campsiteLocationLongitude"
+                value="-104.991531"/></p> <!-- for Denver -->
+            <p></p>
+            <div id="buttonArea" style="align-items: center">
+                <p style="text-align: center">
+                    <button id="submitWeatherApitInformation" 
+                        style="text-align: center; font-weight: bold; padding: 10px; border: 2px double darkblue; 
+                            border-radius: 15px" 
+                        onclick="getCampsiteWeatherForecast(campsiteLocationLatitude.value, campsiteLocationLongitude.value)">
+                        Get 5-Day Weather Forecast For The Selected Campsite
+                    </button>
+                </p>
+            </div>
+            <div id="displaySectionForCampsiteWeatherInformation" style="display: flex; justify-content: center">
+                <div>
+                    <textarea id="displayAreaForCampsiteWeatherInformation" style="width: 500px; height: 500px; padding: 30px; background-color: white; color: black; border: 10px double darkblue">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+
+</footer>
+
+<script> 
+/* -- src="./assets/js/script.js"> */
+//
+
+var campsiteWeatherForecastDisplayArea = document.getElementById("displayAreaForCampsiteWeatherInformation");
+//
+// https://openweathermap.org/api
+// Use the "OpenWeatherMap" API system to obtain a weather forecast for a selected campsite location for a 
+// selected forecast time-span starting from the current date. The location is specified in the form of 
+// latitude and longitude coordinates...and the time-span is between 1 and 5 days (with a default of 5). Those items 
+// of information are specified by query parameters in the URL string. The necessary parameters are "&lat" for
+// latitude; and "&lon" for longitude; and "&cnt" a "count" for the amounts of days for the forecasting; and 
+// "&units=imperial" to indicate/use USA units of temperature measurement (Fahrenheit); and 
+// "&appid=<API KEY PER ACCOUNT REGISTRATION>". The OpenWeatherMap *free* "3-hour Forecast 5 days" service option...
+// which is accessed through the "Current Weather Data" option/plan is used for this data connection.
+//
+// Available API field names and JSON format and syntax examples are documented about at the URL 
+// "https://openweathermap.org/forecast5#data".
+//
+// Available weather symbol icon graphics that could be used for CSS styling and that are indicated in "icon" 
+// data attributes of the API data are listed and described at the URL 
+// "https://openweathermap.org/weather-conditions".
+// 
+// EXAMPLE (for Denver; Latitude/&lat: 39.742043, Longitude/&lon: -104.991531): 
+// https://api.openweathermap.org/data/2.5/forecast?lat=39.742043&lon=-104.991531&cnt=5&units=imperial&appid=993d2f12ebc448e7d897eca3a201a7c2
+//
+//
+function getCampsiteWeatherForecast(passedCampsiteLatitude, passedCampsiteLongitude) {
+    // Build the URL--including the necessary query parameters--that is required for obtaining the desired data
+    // from the API system.
+    var requestWeatherUrlBase = "https://api.openweathermap.org/data/2.5/forecast";
+    var weatherApiKey = "993d2f12ebc448e7d897eca3a201a7c2";
+    var forecastDaySpan = "5";
+    var requestWeatherUrl = requestWeatherUrlBase + "?" + "lat=" + passedCampsiteLatitude + "&lon=" + 
+        passedCampsiteLongitude + "&cnt=" + forecastDaySpan + "&units=imperial" + "&appid=" + weatherApiKey;
+    //
+    window.alert(requestWeatherUrl);
+    // Parse-Process the raw bulk data array that was returned from the fetch query to the weather API system.
+    //
+    // Use an object variable to receive the raw data-set that is from the API system.
+    var theForecastProcessing = getApi(requestWeatherUrl);
+    // Use a set of individual data-component string variables to hold the various weather sub-array data that
+    // each will be converted to a string representation by using the object internal toString functions.
+    var location = theForecastProcessing.city.name;
+    var day1 = "";
+    var day2 = "";
+    var day3 = "";
+    var day4 = "";
+    var day5 = "";
+    //
+    // Use a compilation string variable to assemble the final weather summary information that will be displayed
+    // in the application to the user for the selected campsite.
+    var the5DayForecast = "";
+    // 2 primary data-set arrays of weather data are in the response weather object array: "city" (for the location
+    // attributes) and "list" (for the details of the 5 forecast days).
+    //
+    // Read the city/location descriptive information.
+    // * city
+    //location = theForecastProcessing.city.name; 
+    //
+    // Use a for-loop of 5 cycles to cycle through the 5 forecast day data elements and select the desired fields.
+    basePath = theForecastProcessing.list;
+    //window.alert(basePath);
+    //
+    //for (apiLoop = 0; apiLoop < basePath.length; apiLoop++) {
+    //
+    // list: forecast data-set objects/indexes 0, 1, 2, 3, 4 for the days
+    //
+    // the 1st day forecast;
+    day1 = 
+    "\n" + 
+    location + "\n" + 
+    "=========================================" + "\n" + 
+    "DAY 1: WEATHER FORECAST" + "\n" + 
+    "for Date: " + basePath[0].dt_txt + "\n" + 
+    "Temperature: " + basePath[0].main.temp + "F" + "\n" + 
+    "Temperature-Minimum: " + basePath[0].main.temp_min + "F" + "\n" + 
+    "Temperature-Maximum: " + basePath[0].main.temp_max + "F" + "\n" + 
+    "Description1: " + basePath[0].weather[0].main + "\n" + 
+    "Description2: " + basePath[0].weather[0].description + "\n" + 
+    "Clouds: " + basePath[0].clouds.all + "\n" + 
+    "Wind: " + basePath[0].wind.speed + "\n" + 
+    "Visibility: " + basePath[0].visibility + "\n" + 
+    "Humidity: " + basePath[0].main.humidity + "\n" +
+    "Pressure: " + basePath[0].main.pressure + "\n" + 
+    "Graphics Icon File: " + basePath[0].weather[0].icon + "\n" + 
+    "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
+    "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
+    "=========================================" + "\n" + 
+    "\n";
+    
+    /*    
+    forecastDay2 = (theSelectedCampsiteWeatherForecast5DaysProcessing.list[1]);
+        // the 2nd day forecast;
+    
+    forecastDay3 = (theSelectedCampsiteWeatherForecast5DaysProcessing.list[2]).toString();
+        // the 3rd day forecast;
+    
+    forecastDay4 = (theSelectedCampsiteWeatherForecast5DaysProcessing.list[3]).toString();
+        // the 4th day forecast;
+    
+    forecastDay5 = (theSelectedCampsiteWeatherForecast5DaysProcessing.list[4]).toString();
+        // the 5th day forecast;
+
+    // Format the processed API data information summary compilation string value for display.
+    // Use a different for-display compilation string variable that will contain all of the processed
+    // sub-string variables elements.
+
+    the5DayForecast = 
+        "<br>" + 
+       "[ " + Location + " ] Weather -- for " +  + "<br>" + 
+        "Temperature: " + forecastDay1;
+
+    theSelectedCampsiteWeather5Days = 
+        "\n" + 
+        Location + "\n" + 
+        Day1 + "\n" + 
+        Day2 + "\n" + 
+        Day3 + "\n" + 
+        Day4 + "\n" + 
+        Day5 + "\n" + 
+        "\n";
+
+    */
+    
+    displayAreaForCampsiteWeatherInformation.innerHTML = day1;
+    
+    // the5DayForecast;
+
+    // Save/Load to from local storage the previously-saved array variable that holds the entire list of campsite records 
+    // that were retrieved during the current campsite search. Then return/send that array variable to the main
+    // part of the program for additional processing.   
+    //localStorage.setItem("5DdayForecast", JSON.stringify(the5DayForecast));
+    //JSON.parse(localStorage.getItem("5DayForecast"))
+    
+}
+
+// the basic API fetch-transmit function and data response-return process function
+
+function getApi(requestUrl) {
+    var data = null;
+    fetch(requestUrl)
+    .then(function (response) {
+        if (response.status === 400) {
+            //page_element.textContent = "FETCH ERROR: " + response.status;
+            console.log(response);
+        }
+        return response.json();
+    }) .then(function(data){
+    //window.alert("fetch response processing");
+    //console.log(data);
+    // Save to local storage for later retrieval and accessing the array variable that holds the entire list
+    // of campsite weather data records that were retrieved during the current campsite weather search.
+    var campsiteFetchResponseDataRawObject = data; 
+        // the campsite weather data component of the response data object
+    localStorage.setItem("campsiteWeatherFetchResponseDataRawObject", 
+        JSON.stringify(campsiteWeatherFetchResponseDataRawObject));
+    });
+    // Load from local storage the previously-saved array variable that holds the entire list of campsite records 
+    // that were retrieved during the current campsite search. Then return/send that array variable to the main
+    // part of the program for additional processing.   
+    return JSON.parse(localStorage.getItem("campsiteWeatherFetchResponseDataRawObject"));
+}
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+<!-- 
+
+
+[ WEATHER API INFORMATION ]:
+
+
+Weather: https://openweathermap.org/api
+
+https://openweathermap.org/api/one-call-3
+https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+--
+
+ERROR INFORMATION: https://openweathermap.org/faq#error401
+
+5 day forecast is available at any location on the globe. It includes weather forecast data with 3-hour step. Forecast is available in JSON or XML format.
+
+Call 5 day / 3 hour forecast data
+How to make an API call
+You can search weather forecast for 5 days with data every 3 hours by geographic coordinates. All weather data can be obtained in JSON and XML formats.
+
+API call
+
+api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+
+Parameters
+lat, lon	required	Geographical coordinates (latitude, longitude). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use our Geocoding API.
+appid	required	Your unique API key (you can always find it on your account page under the "API key" tab)
+units	optional	Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more
+mode	optional	Response format. JSON format is used by default. To get data in XML format use mode=xml. Learn more
+cnt	optional	A number of timestamps, which will be returned in the API response. Learn more
+units	optional	Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more
+lang	optional	You can use the lang parameter to get the output in your language. Learn more
+Please use Geocoder API if you need automatic convert city names and zip-codes to geo coordinates and the other way around.
+
+Please note that built-in geocoder has been deprecated. Although it is still available for use, bug fixing and updates are no longer available for this functionality.
+
+Examples of API calls
+
+https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid={API key}
+
+
+Weather fields in API response
+If you do not see some of the parameters in your API response it means that these weather phenomena are just not happened for the time of measurement for the city or location chosen. Only really measured or calculated data is displayed in API response.
+
+Format
+Response format. JSON format is used by default. To get data in XML format use mode=xml.
+
+Parameters
+mode	optional	Response format. JSON format is used by default. To get data in XML format use mode=xml.
+Examples of API calls
+
+  
+
+Fields in API response
+
+cod Internal parameter
+message Internal parameter
+cntA number of timestamps returned in the API response
+list
+list.dt Time of data forecasted, unix, UTC
+list.main
+list.main.temp Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+list.main.feels_like This temperature parameter accounts for the human perception of weather. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+list.main.temp_min Minimum temperature at the moment of calculation. This is minimal forecasted temperature (within large megalopolises and urban areas), use this parameter optionally. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+list.main.temp_max Maximum temperature at the moment of calculation. This is maximal forecasted temperature (within large megalopolises and urban areas), use this parameter optionally. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+list.main.pressure Atmospheric pressure on the sea level by default, hPa
+list.main.sea_level Atmospheric pressure on the sea level, hPa
+list.main.grnd_level Atmospheric pressure on the ground level, hPa
+list.main.humidity Humidity, %
+list.main.temp_kf Internal parameter
+list.weather
+list.weather.id Weather condition id
+list.weather.main Group of weather parameters (Rain, Snow, Extreme etc.)
+list.weather.description Weather condition within the group. You can get the output in your language. Learn more.
+list.weather.icon Weather icon id
+list.clouds
+list.clouds.all Cloudiness, %
+list.wind
+list.wind.speed Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
+list.wind.deg Wind direction, degrees (meteorological)
+list.wind.gust Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
+list.visibility Average visibility, metres. The maximum value of the visibility is 10km
+list.pop Probability of precipitation. The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%
+list.rain
+list.rain.3h Rain volume for last 3 hours, mm
+list.snow
+list.snow.3h Snow volume for last 3 hours
+list.sys
+list.sys.pod Part of the day (n - night, d - day)
+list.dt_txt Time of data forecasted, ISO, UTC
+city
+city.id City ID. Please note that built-in geocoder functionality has been deprecated. Learn more here.
+city.name City name. Please note that built-in geocoder functionality has been deprecated. Learn more here.
+city.coord
+city.coord.lat City geo location, latitude
+city.coord.lon City geo location, longitude
+city.country Country code (GB, JP etc.). Please note that built-in geocoder functionality has been deprecated. Learn more here.
+city.population City population
+city.timezone Shift in seconds from UTC
+city.sunrise Sunrise time, Unix, UTC
+city.sunset Sunset time, Unix, UTC
+
+Min/max temperature in current weather API and forecast API
+Please, do not confuse min/max parameters in our weather APIs.
+In 5 day / 3 hour forecast API, Hourly forecast API and Current weather API - temp_min and temp_max are optional parameters mean min / max temperature in the city at the current moment just for your reference. For large cities and megalopolises geographically expanded it might be applicable. In most cases both temp_min and temp_max parameters have the same volume as 'temp'. Please, use temp_min and temp_max parameters in current weather API optionally.
+In 16 Day forecast - min and max mean maximum and minimum temperature in the day.
+Current Weather API response                    
+
+                    
+For comparison take a look at example of Daily Forecast Weather API response:
+
+Daily Forecast Weather API response   
+
+"dt":1406080800,
+"temp":{
+        "day":297.77,  //daily averaged temperature
+        "min":293.52, //daily min temperature
+        "max":297.77, //daily max temperature
+        "night":293.52, //night temperature
+        "eve":297.77, //evening temperature
+        "morn":297.77}, //morning temperature
+
+Please note that API requests by city name, zip-codes and city id have been deprecated. Although they are still available for use, bug fixing and updates are no longer available for this functionality.
+
+
+
+JSON
+Example of API response
+
+{
+  "cod": "200",
+  "message": 0,
+  "cnt": 40,
+  "list": [
+    {
+      "dt": 1661871600,
+      "main": {
+        "temp": 296.76,
+        "feels_like": 296.98,
+        "temp_min": 296.76,
+        "temp_max": 297.87,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 933,
+        "humidity": 69,
+        "temp_kf": -1.11
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 0.62,
+        "deg": 349,
+        "gust": 1.18
+      },
+      "visibility": 10000,
+      "pop": 0.32,
+      "rain": {
+        "3h": 0.26
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2022-08-30 15:00:00"
+    },
+    {
+      "dt": 1661882400,
+      "main": {
+        "temp": 295.45,
+        "feels_like": 295.59,
+        "temp_min": 292.84,
+        "temp_max": 295.45,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 931,
+        "humidity": 71,
+        "temp_kf": 2.61
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10n"
+        }
+      ],
+      "clouds": {
+        "all": 96
+      },
+      "wind": {
+        "speed": 1.97,
+        "deg": 157,
+        "gust": 3.39
+      },
+      "visibility": 10000,
+      "pop": 0.33,
+      "rain": {
+        "3h": 0.57
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2022-08-30 18:00:00"
+    },
+    {
+      "dt": 1661893200,
+      "main": {
+        "temp": 292.46,
+        "feels_like": 292.54,
+        "temp_min": 290.31,
+        "temp_max": 292.46,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 931,
+        "humidity": 80,
+        "temp_kf": 2.15
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10n"
+        }
+      ],
+      "clouds": {
+        "all": 68
+      },
+      "wind": {
+        "speed": 2.66,
+        "deg": 210,
+        "gust": 3.58
+      },
+      "visibility": 10000,
+      "pop": 0.7,
+      "rain": {
+        "3h": 0.49
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2022-08-30 21:00:00"
+    },
+    ....
+    {
+      "dt": 1662292800,
+      "main": {
+        "temp": 294.93,
+        "feels_like": 294.83,
+        "temp_min": 294.93,
+        "temp_max": 294.93,
+        "pressure": 1018,
+        "sea_level": 1018,
+        "grnd_level": 935,
+        "humidity": 64,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overcast clouds",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 88
+      },
+      "wind": {
+        "speed": 1.14,
+        "deg": 17,
+        "gust": 1.57
+      },
+      "visibility": 10000,
+      "pop": 0,
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2022-09-04 12:00:00"
+    }
+  ],
+  "city": {
+    "id": 3163858,
+    "name": "Zocca",
+    "coord": {
+      "lat": 44.34,
+      "lon": 10.99
+    },
+    "country": "IT",
+    "population": 4593,
+    "timezone": 7200,
+    "sunrise": 1661834187,
+    "sunset": 1661882248
+  }
+}
+      
+
+
+
+
+
+Built-in API request by city name
+You can search weather forecast for 5 days with data every 3 hours by city name. All weather data can be obtained in JSON and XML formats.
+
+API call
+
+api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
+
+api.openweathermap.org/data/2.5/forecast?q={city name},{country code}&appid={API key}
+
+api.openweathermap.org/data/2.5/forecast?q={city name},{state code},{country code}&appid={API key}
+
+Parameters
+q	required	City name, state code and country code divided by comma, use ISO 3166 country codes.
+You can specify the parameter not only in English. In this case, the API response should be returned in the same language as the language of requested location name if the location is in our predefined list of more than 200,000 locations.
+
+appid	required	Your unique API key (you can always find it on your account page under the "API key" tab)
+mode	optional	Response format. JSON format is used by default. To get data in XML format use mode=xml. Learn more
+cnt	optional	A number of timestamps, which will be returned in the API response. Learn more
+units	optional	Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more
+lang	optional	You can use the lang parameter to get the output in your language. Learn more
+Examples of API calls
+
+api.openweathermap.org/data/2.5/forecast?q=London,us&mode=xml&appid={API key}
+
+
+Please note, that searching by states available only for the USA locations.
+There is a possibility to receive a central district of the city/town with its own parameters (geographic coordinates/id/name) in API response. Please see the example below.
+
+api.openweathermap.org/data/2.5/forecast?q=München,DE&appid={API key}
+
+
+Built-in API request by city ID
+You can search weather forecast for 5 days with data every 3 hours by city ID. All weather data can be obtained in JSON and XML formats.
+
+List of city ID "city.list.json.gz" can be downloaded here.
+
+We recommend to call API by city ID to get unambiguous result for your city.
+
+API call
+
+api.openweathermap.org/data/2.5/forecast?id={city ID}&appid={API key}
+
+Parameters
+id	required	City ID. The list of city IDs 'city.list.json.gz' can be downloaded here.
+appid	required	Your unique API key (you can always find it on your account page under the "API key" tab)
+mode	optional	Response format. JSON format is used by default. To get data in XML format use mode=xml. Learn more
+cnt	optional	A number of timestamps, which will be returned in the API response. Learn more
+units	optional	Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more
+lang	optional	You can use the lang parameter to get the output in your language. Learn more
+Examples of API calls
+
+api.openweathermap.org/data/2.5/forecast?id=524901&appid={API key}
+
+
+Built-in API request by ZIP code
+Please note if country is not specified then the search works for USA as a default.
+
+API call
+
+api.openweathermap.org/data/2.5/forecast?zip={zip code},{country code}&appid={API key}
+
+Parameters
+zip	required	Zip code
+appid	required	Your unique API key (you can always find it on your account page under the "API key" tab)
+mode	optional	Response format. JSON format is used by default. To get data in XML format use mode=xml. Learn more
+cnt	optional	A number of timestamps, which will be returned in the API response. Learn more
+units	optional	Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more
+lang	optional	You can use the lang parameter to get the output in your language. Learn more
+Examples of API calls
+
+api.openweathermap.org/data/2.5/forecast?zip=94040,us&appid={API key}
+
+                    
+Limitation of result
+To limit number of timestamps in the API response please setup cnt.
+
+Parameters
+cnt	optional	A number of timestamps, which will be returned in the API response.
+Examples of API calls
+
+https://api.openweathermap.org/data/2.5/forecast?lat=57&lon=-2.15&cnt=3&appid={API key}
+
+
+Units of measurement
+standard, metric, and imperial units are available.
+
+Parameters
+units	optional	Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default
+Temperature is available in Fahrenheit, Celsius and Kelvin units.
+For temperature in Fahrenheit use units=imperial
+For temperature in Celsius use units=metric
+Temperature in Kelvin is used by default, no need to use units parameter in API call
+List of all API parameters with units openweathermap.org/weather-data
+
+Examples of API calls
+
+Standard
+
+https://api.openweathermap.org/data/2.5/forecast?lat=57&lon=-2.15&appid={API key}
+
+
+Metric
+
+https://api.openweathermap.org/data/2.5/forecast?lat=57&lon=-2.15&appid={API key}&units=metric
+
+
+Imperial
+
+https://api.openweathermap.org/data/2.5/forecast?lat=57&lon=-2.15&appid=
+{API key}&units=imperial
+
+
+
+
+Bulk downloading
+We provide number of bulk files with current weather and forecasts. More information is on the Bulk page.
+
+Bulk downloading is available not for all accounts. To get more information please refer to the Price page.
+Examples of bulk files
+
+http://bulk.openweathermap.org/sample/ -->

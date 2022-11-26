@@ -1,5 +1,5 @@
 :root {
-  --main-page-background-color: white;
+  --main-page-background-color: rgb(94, 93, 109);
 }
 
 body {
@@ -13,6 +13,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: rgb(224, 241, 251); /* or maybe rgb(165, 165, 165) or rgb(169, 110, 0); */
 }
 
 /* .hero {
@@ -189,8 +190,6 @@ nav ul li a:hover {
 
 
 /* START SECTION: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) */
-
-
 #generateCampsiteInformationRecordListButtonSection { 
   /* the button that is on the main page; not on the record list */
   text-align: center;
@@ -198,21 +197,27 @@ nav ul li a:hover {
 
 #generateCampsiteInformationRecordListButton,
 #hideCampsiteRecordListDisplayAreaButton {  /* the button that is on the main page; not on the record list */
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
   height: 50px;
-  width: 70%;
-  padding: 10px;
+  width: fit-content;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-bottom: 20px;
   border-bottom: 20px;
-  background-color: gray;
-  border: 2px double orange;
-  border-radius: 7px;
+  background-color: orange;
+  border: 5px solid rgb(12, 96, 12);
+  border-radius: 50px;
 }
 
 #campsiteFetchResponseDataDisplayArea {
   padding: 30px;
   margin-bottom: 30px;
   background-color: rgb(224, 241, 251); /* sky blue */
-  border: 1px solid black;
+  border: none;
 }
 
 #campsiteFetchResponseDataDisplayArea #campsiteDisplayAreaTitleSection {
@@ -228,17 +233,28 @@ nav ul li a:hover {
   color: white;
   text-align: center;
   font-weight: bold;
-  padding: 20px;
+  padding: 10px;
   background-color: darkblue;
   border-bottom: 10px solid rgb(169, 110, 0);
 }
 
 #recordsListNavigationBarSection button {
-  border-radius: 7px;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#previousSelectedCampsiteRecordDisplayField {
+  margin-top: 20px;
+}
+
+#campsiteRecordsListContainer {
+  margin: 30px;
+  padding: 0px;
 }
 
 #campsiteRecordsList {
-  margin: 30px;
+  margin: 0px;
   padding: 0px;
   background-color: lightgray;
 }
@@ -326,11 +342,12 @@ nav ul li a:hover {
 }
 
 .campsiteRecordSeparator button {
-  border-radius: 7px;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-
-
 /* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
+
 
 #aboutus {
   border: black solid;
@@ -374,7 +391,6 @@ footer {
   transition: 0.4s;
 }
 
-
 #generateADifferentCampsiteListButton a:link, 
 a:visited, a:hover, a:active {
   color: white;
@@ -398,3 +414,4 @@ a:visited, a:hover, a:active {
     padding: 0px;
   }
 }
+

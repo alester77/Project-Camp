@@ -66,6 +66,23 @@ footer {
   box-shadow: 0px 0px 20px 0px blue;
   transition: 0.4s;
 }
+
+@media (max-width: 690px) {
+  .map
+  {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  .map
+  {
+    display: flex;
+    flex-direction:column;
+  }
+}
+
 #mapButton:hover {
   color: white;
   transition: 0.3s;

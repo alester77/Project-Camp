@@ -453,6 +453,7 @@ a:active {
   margin-bottom: 50px;
   font-size: 22px;
   background-color: rgb(224, 241, 251);
+  padding: 15px 10px 50px 10px;
 }
 #reservationsTitle{
   font-weight: bold;

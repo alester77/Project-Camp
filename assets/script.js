@@ -820,3 +820,8 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
 //
 ///////////////////////////////////////////////
 
+//////////////////////
+// Code for displaying reservation
+if(localStorage.getItem("reservation") === null){
+  document.getElementById("reservation").innerHTML = "You have no reservations booked at this time."
+} else { document.getElementById("reservation").innerHTML = localStorage.getItem("reservation")}

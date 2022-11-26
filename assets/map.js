@@ -17,7 +17,7 @@ const map = new mapboxgl.Map({
 container: 'map',
 // Default is set to Denver
 style: 'mapbox://styles/mapbox/streets-v12',
-center: [-104.99, 39.74],
+center: [coorLong, coorLat],
 zoom: 10
 });
 

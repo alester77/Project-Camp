@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/map.css">
+  <script src="https://kit.fontawesome.com/67bb6fbc58.js" crossorigin="anonymous"></script>
   <!-- needed for mapbox map -->
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
   <link
@@ -20,13 +21,20 @@
   />
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap" rel="stylesheet">
+
+
   <title>Take you away</title>
 </head>
 <body>
+  
   <header class="display">Explore the area of your next Adventure</header>
+  
+  <a href="/index.html"><span class="fa-solid fa-house-chimney fa-2xl"></span></a>
+  
+  
   <div class="map">
     <!-- Information to display map from map box-->
     <div id="map" style="width: 750px; height: 750px"></div>
@@ -37,6 +45,7 @@
   <div id="campName"></div>
   <div id="coord"></div>
 </div>
+
 
 <script src="./assets/map.js"></script>
 </body>

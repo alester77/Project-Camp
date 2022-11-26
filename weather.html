@@ -24,27 +24,43 @@
         <div class="sectionHeader">
             <h2 style="text-align: center">Weather Forecast</h2>
             <p style="text-align: center">(Based on Latitude and Longitude Coordinates)</p>
-            <p></p>
-            <p style="text-align: center">campsiteLocationLatitude: <input id="campsiteLocationLatitude"
+            <br>  <!-- intentional space -->
+            <br>  <!-- intentional space -->
+            <p style="text-align: center">Campsite Location Latitude: <input id="campsiteLocationLatitude"
                 value="39.742043"/></p> <!-- for Denver -->
-            <p style="text-align: center">campsiteLocationLongitude: <input id="campsiteLocationLongitude"
+            <p style="text-align: center">Campsite Location Longitude: <input id="campsiteLocationLongitude"
                 value="-104.991531"/></p> <!-- for Denver -->
-            <p></p>
+            <p style="text-align: center">Note: These fields auto-import from the Project Camp website application,
+                but you can enter your own search coordinates (if known)</p>
+            <br>  <!-- intentional space -->
             <div id="buttonArea" style="align-items: center">
                 <p style="text-align: center">
-                    <button id="submitWeatherApitInformation" 
+                    <button id="submitWeatherApiInformation" 
                         style="text-align: center; font-weight: bold; padding: 10px; border: 2px double darkblue; 
                             border-radius: 15px" 
                         onclick="getCampsiteWeatherForecast(campsiteLocationLatitude.value, campsiteLocationLongitude.value)">
                         Get 5-Day Weather Forecast For The Selected Campsite
                     </button>
                 </p>
+                <br>  <!-- intentional space -->
             </div>
             <div id="displaySectionForCampsiteWeatherInformation" style="display: flex; justify-content: center">
                 <div>
-                    <textarea id="displayAreaForCampsiteWeatherInformation" style="width: 500px; height: 500px; padding: 30px; background-color: white; color: black; border: 10px double darkblue">
+                    <textarea id="displayAreaForCampsiteWeatherInformation" readonly style="width: 300px; height: 500px; 
+                      padding: 30px; background-color: white; color: black; border: 10px double darkblue">
                     </textarea>
                 </div>
+            </div>
+            <div>
+                <br>  <!-- intentional space -->
+                <p style="text-align: center">
+                    <button id="goBackToProjectCampWebpage"
+                        style="text-align: center; font-weight: bold; padding: 10px; border: 2px double darkblue; 
+                        border-radius: 15px"
+                        onclick="location.replace('./index.html')">
+                        Go Back To The Project Camp Webpage
+                    </button>
+                </p>
             </div>
         </div>
     </div>
@@ -54,11 +70,35 @@
 
 </footer>
 
+<!-- <script src="./MAYBE IMPORT THE MAIN JS FILE"></script> -->
 <script> 
 /* -- src="./assets/js/script.js"> */
 //
-
+//
+// Load from local storage the previously-saved array variable that holds the entire list of campsite records that 
+// were generated during the current campsite search. Then import the involved campsite record based on the ID that 
+// was sent by the "Show 5-Day Weather Forecast" button that was clicked on the campsite record.
+//  
+var selectedCampsiteRecord = JSON.parse(localStorage.getItem("ProjectCampLastSelectedCampsiteRecord"));
+// Campsite Location Latitude: <input id="campsiteLocationLatitude" value="39.742043" default for Denver/>
+// Campsite Location Longitude: <input id="campsiteLocationLongitude" value="-104.991531" default for Denver/>
+var campsiteLatitude = selectedCampsiteRecord[6];
+if (campsiteLatitude == "0") {
+  campsiteLatitude = "39.742043";  // default for Denver
+}
+document.getElementById("campsiteLocationLatitude").value = campsiteLatitude;
+var campsiteLongitude = selectedCampsiteRecord[7];
+if (campsiteLongitude == "0") {
+  campsiteLongitude = "-104.991531";  // default for Denver
+}
+document.getElementById("campsiteLocationLongitude").value = campsiteLongitude;
+//
 var campsiteWeatherForecastDisplayArea = document.getElementById("displayAreaForCampsiteWeatherInformation");
+//
+//function goBackToTheProjectCampWebpage() {
+//  //window.alert("goBackToTheProjectCampWebpage");
+//  location.replace("./index.html");  //  the URL of the main Project Campsite webpage
+//}
 //
 // https://openweathermap.org/api
 // Use the "OpenWeatherMap" API system to obtain a weather forecast for a selected campsite location for a 
@@ -90,7 +130,7 @@ function getCampsiteWeatherForecast(passedCampsiteLatitude, passedCampsiteLongit
     var requestWeatherUrl = requestWeatherUrlBase + "?" + "lat=" + passedCampsiteLatitude + "&lon=" + 
         passedCampsiteLongitude + "&cnt=" + forecastDaySpan + "&units=imperial" + "&appid=" + weatherApiKey;
     //
-    window.alert(requestWeatherUrl);
+    //window.alert(requestWeatherUrl);
     // Parse-Process the raw bulk data array that was returned from the fetch query to the weather API system.
     //
     // Use an object variable to receive the raw data-set that is from the API system.
@@ -122,11 +162,11 @@ function getCampsiteWeatherForecast(passedCampsiteLatitude, passedCampsiteLongit
     //
     // list: forecast data-set objects/indexes 0, 1, 2, 3, 4 for the days
     //
-    // the 1st day forecast;
+    // the 1st day forecast
     day1 = 
     "\n" + 
     location + "\n" + 
-    "=========================================" + "\n" + 
+    "====================================" + "\n" + 
     "DAY 1: WEATHER FORECAST" + "\n" + 
     "for Date: " + basePath[0].dt_txt + "\n" + 
     "Temperature: " + basePath[0].main.temp + "F" + "\n" + 
@@ -142,53 +182,116 @@ function getCampsiteWeatherForecast(passedCampsiteLatitude, passedCampsiteLongit
     "Graphics Icon File: " + basePath[0].weather[0].icon + "\n" + 
     "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
     "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
-    "=========================================" + "\n" + 
+    "====================================" + "\n" + 
+    "\n";    
+    // the 2nd day forecast
+    day2 = 
+    "\n" + 
+    location + "\n" + 
+    "====================================" + "\n" + 
+    "DAY 2: WEATHER FORECAST" + "\n" + 
+    "for Date: " + basePath[1].dt_txt + "\n" + 
+    "Temperature: " + basePath[1].main.temp + "F" + "\n" + 
+    "Temperature-Minimum: " + basePath[1].main.temp_min + "F" + "\n" + 
+    "Temperature-Maximum: " + basePath[1].main.temp_max + "F" + "\n" + 
+    "Description1: " + basePath[1].weather[0].main + "\n" + 
+    "Description2: " + basePath[1].weather[0].description + "\n" + 
+    "Clouds: " + basePath[1].clouds.all + "\n" + 
+    "Wind: " + basePath[1].wind.speed + "\n" + 
+    "Visibility: " + basePath[1].visibility + "\n" + 
+    "Humidity: " + basePath[1].main.humidity + "\n" +
+    "Pressure: " + basePath[1].main.pressure + "\n" + 
+    "Graphics Icon File: " + basePath[1].weather[0].icon + "\n" + 
+    "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
+    "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
+    "====================================" + "\n" + 
     "\n";
-    
-    /*    
-    forecastDay2 = (theSelectedCampsiteWeatherForecast5DaysProcessing.list[1]);
-        // the 2nd day forecast;
-    
-    forecastDay3 = (theSelectedCampsiteWeatherForecast5DaysProcessing.list[2]).toString();
-        // the 3rd day forecast;
-    
-    forecastDay4 = (theSelectedCampsiteWeatherForecast5DaysProcessing.list[3]).toString();
-        // the 4th day forecast;
-    
-    forecastDay5 = (theSelectedCampsiteWeatherForecast5DaysProcessing.list[4]).toString();
-        // the 5th day forecast;
+    // the 3rd day forecast    
+    day3 = 
+    "\n" + 
+    location + "\n" + 
+    "====================================" + "\n" + 
+    "DAY 3: WEATHER FORECAST" + "\n" + 
+    "for Date: " + basePath[2].dt_txt + "\n" + 
+    "Temperature: " + basePath[2].main.temp + "F" + "\n" + 
+    "Temperature-Minimum: " + basePath[2].main.temp_min + "F" + "\n" + 
+    "Temperature-Maximum: " + basePath[2].main.temp_max + "F" + "\n" + 
+    "Description1: " + basePath[2].weather[0].main + "\n" + 
+    "Description2: " + basePath[2].weather[0].description + "\n" + 
+    "Clouds: " + basePath[2].clouds.all + "\n" + 
+    "Wind: " + basePath[2].wind.speed + "\n" + 
+    "Visibility: " + basePath[2].visibility + "\n" + 
+    "Humidity: " + basePath[2].main.humidity + "\n" +
+    "Pressure: " + basePath[2].main.pressure + "\n" + 
+    "Graphics Icon File: " + basePath[2].weather[0].icon + "\n" + 
+    "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
+    "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
+    "====================================" + "\n" + 
+    "\n";
+    // the 4th day forecast
+    day4 = 
+    "\n" + 
+    location + "\n" + 
+    "====================================" + "\n" + 
+    "DAY 4: WEATHER FORECAST" + "\n" + 
+    "for Date: " + basePath[3].dt_txt + "\n" + 
+    "Temperature: " + basePath[3].main.temp + "F" + "\n" + 
+    "Temperature-Minimum: " + basePath[3].main.temp_min + "F" + "\n" + 
+    "Temperature-Maximum: " + basePath[3].main.temp_max + "F" + "\n" + 
+    "Description1: " + basePath[3].weather[0].main + "\n" + 
+    "Description2: " + basePath[3].weather[0].description + "\n" + 
+    "Clouds: " + basePath[3].clouds.all + "\n" + 
+    "Wind: " + basePath[3].wind.speed + "\n" + 
+    "Visibility: " + basePath[3].visibility + "\n" + 
+    "Humidity: " + basePath[3].main.humidity + "\n" +
+    "Pressure: " + basePath[3].main.pressure + "\n" + 
+    "Graphics Icon File: " + basePath[3].weather[0].icon + "\n" + 
+    "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
+    "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
+    "====================================" + "\n" + 
+    "\n";
+    // the 5th day forecast
+    day5 = 
+    "\n" + 
+    location + "\n" + 
+    "====================================" + "\n" + 
+    "DAY 5: WEATHER FORECAST" + "\n" + 
+    "for Date: " + basePath[4].dt_txt + "\n" + 
+    "Temperature: " + basePath[4].main.temp + "F" + "\n" + 
+    "Temperature-Minimum: " + basePath[4].main.temp_min + "F" + "\n" + 
+    "Temperature-Maximum: " + basePath[4].main.temp_max + "F" + "\n" + 
+    "Description1: " + basePath[4].weather[0].main + "\n" + 
+    "Description2: " + basePath[4].weather[0].description + "\n" + 
+    "Clouds: " + basePath[4].clouds.all + "\n" + 
+    "Wind: " + basePath[4].wind.speed + "\n" + 
+    "Visibility: " + basePath[4].visibility + "\n" + 
+    "Humidity: " + basePath[4].main.humidity + "\n" +
+    "Pressure: " + basePath[4].main.pressure + "\n" + 
+    "Graphics Icon File: " + basePath[4].weather[0].icon + "\n" + 
+    "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
+    "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
+    "====================================" + "\n" + 
+    "\n";
 
     // Format the processed API data information summary compilation string value for display.
     // Use a different for-display compilation string variable that will contain all of the processed
     // sub-string variables elements.
 
+    // the 5=Day Forecast
     the5DayForecast = 
-        "<br>" + 
-       "[ " + Location + " ] Weather -- for " +  + "<br>" + 
-        "Temperature: " + forecastDay1;
-
-    theSelectedCampsiteWeather5Days = 
-        "\n" + 
-        Location + "\n" + 
-        Day1 + "\n" + 
-        Day2 + "\n" + 
-        Day3 + "\n" + 
-        Day4 + "\n" + 
-        Day5 + "\n" + 
-        "\n";
-
-    */
+    day1 + "\n" + 
+    day2 + "\n" + 
+    day3 + "\n" + 
+    day4 + "\n" + 
+    day5 + "\n" + 
+    "\n";
+   
+    displayAreaForCampsiteWeatherInformation.innerHTML = the5DayForecast;
     
-    displayAreaForCampsiteWeatherInformation.innerHTML = day1;
-    
-    // the5DayForecast;
-
-    // Save/Load to from local storage the previously-saved array variable that holds the entire list of campsite records 
-    // that were retrieved during the current campsite search. Then return/send that array variable to the main
-    // part of the program for additional processing.   
-    //localStorage.setItem("5DdayForecast", JSON.stringify(the5DayForecast));
-    //JSON.parse(localStorage.getItem("5DayForecast"))
-    
+    // Save the generated weather forecast information to local storage for possible later access/viewing.  
+    localStorage.setItem("ProjectCampCampsite5DayForecast", JSON.stringify(the5DayForecast));
+    //<variable>=JSON.parse(localStorage.getItem("ProjectCampCampsite5DayForecast"));  // for possible re-loading
+  //  
 }
 
 // the basic API fetch-transmit function and data response-return process function
@@ -233,13 +336,21 @@ function getApi(requestUrl) {
 [ WEATHER API INFORMATION ]:
 
 
-Weather: https://openweathermap.org/api
+OpenWeather: https://openweathermap.org/api
 
 https://openweathermap.org/api/one-call-3
 https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+
 --
 
 ERROR INFORMATION: https://openweathermap.org/faq#error401
+
+// Available API field names and JSON format and syntax examples are documented about at the URL 
+// "https://openweathermap.org/forecast5#data".
+//
+// Available weather symbol icon graphics that could be used for CSS styling and that are indicated in "icon" 
+// data attributes of the API data are listed and described at the URL 
+// "https://openweathermap.org/weather-conditions".
 
 5 day forecast is available at any location on the globe. It includes weather forecast data with 3-hour step. Forecast is available in JSON or XML format.
 

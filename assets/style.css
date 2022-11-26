@@ -1,3 +1,4 @@
+
 :root {
   --main-page-background-color: rgb(94, 93, 109);
 }
@@ -16,12 +17,6 @@ body {
   background-color: rgb(224, 241, 251); /* or maybe rgb(165, 165, 165) or rgb(169, 110, 0); */
 }
 
-/* .hero {
-  background-image: url(./images/background-image2.jpg);
-  background-size: cover;
-  background-position: center;
-} */
-
 h1 {
   font-size: 35px;
   font-weight: bold;
@@ -37,7 +32,6 @@ h1 span {
 h2 {
   font-size: 25px;
   font-weight: bold;
-  /* color: lightgrey; */
   -webkit-text-stroke: 1px blue;
 }
 
@@ -50,7 +44,7 @@ footer {
 }
 
 .header- {
-  /*margin: -20px;*/
+  margin: -20px;
   margin-top: 10px;
   padding: 0px;
 }
@@ -60,31 +54,51 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: white;
+  align-items: center;
+  color: blue;
   width: 350px;
-  /* max-width: 350px; */
   padding: 10px;
   margin: 10px;
   height: 75px;
-  text-align: center;
-  /* text-decoration: solid; */
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: forestgreen;
   font-size: 40px;
   margin-top: 50px;
   margin-bottom: 50px;
-  -webkit-text-stroke: 1px black;
-
+  -webkit-text-stroke: 1.5px black;
   border-radius: 45px;
-  vertical-align: middle;
-  text-decoration: none;
   box-shadow: 0px 0px 20px 0px blue;
+  transition: 0.4s;
+}
+
+#mapButton:hover {
+  color: white;
+  transition: 0.3s;
+  transform: scale(1.08);
 }
 
 .buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.map {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.sites {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: 5px solid black;
+  margin: 10px;
+  padding: 10px;
+  font-size: 50px;
+  color: white;
+  border-radius: 25px;
 }
 
 /* Navigation Bar Header */
@@ -110,11 +124,11 @@ nav {
 nav ul li {
   list-style-type: none;
   display: inline-block;
-  /*padding: 10px 25px;*/
-  padding: 5px 15px;
+  padding: 10px 25px;
 }
 
-nav ul li a {
+.nav-bar li a {
+  font-size: 30px;
   color: blue;
   padding: 10px;
   text-decoration: none;
@@ -123,13 +137,16 @@ nav ul li a {
   -webkit-text-stroke: 1px black;
 }
 
-nav ul li a:hover {
+.nav-bar ul li a:hover {
   color: forestgreen;
   transition: 0.4s;
 }
 
-.nav-bar:hover {
-  color: white;
+#map {
+  display: flex;
+  border-radius: 25px;
+  border: solid 4px;
+  border-color: black;
 }
 
 #ideaNav {
@@ -153,39 +170,9 @@ nav ul li a:hover {
   position: fixed;
 }
 
-#datepicker{
-    display: flex;
-    justify-content: right;
-  }
-
 #datepicker {
   display: flex;
   justify-content: right;
-}
-
-.map {
-  display: flex;
-  justify-content: center;
-  margin: 30px;
-}
-
-#map {
-  display: flex;
-  border-radius: 25px;
-  border: solid 4px;
-  border-color: black;
-}
-
-.sites {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  border: 5px solid black;
-  margin: 10px;
-  padding: 10px;
-  font-size: 50px;
-  color: white;
-  border-radius: 25px;
 }
 
 
@@ -226,7 +213,6 @@ nav ul li a:hover {
   text-align: center;
   font-weight: bold;
   padding: 0px;
-  margin-top: 20px;
 }
 
 #recordsListNavigationBarSection {
@@ -257,10 +243,7 @@ nav ul li a:hover {
   margin: 0px;
   padding: 0px;
   background-color: lightgray;
-}
-
-#campsiteRecordListQueryCriteriaStatusField {
-  font-size: 15px;
+  border: 10px solid rgb(169, 110, 0);
 }
 
 .campsiteRecord {
@@ -270,8 +253,7 @@ nav ul li a:hover {
   padding-top: 10px;
   padding-bottom: 0px;
   background-color: lightgray;
-  border-left: 10px solid rgb(169, 110, 0);
-  border-right: 10px solid rgb(169, 110, 0);
+  border-top: 10px solid rgb(169, 110, 0);
   overflow-x: hidden;
 }
 
@@ -329,15 +311,14 @@ nav ul li a:hover {
   font-weight: bold;
   text-align: center;
   height: fit-content;
-  margin-left: -20px;
-  margin-right: -20px;
+  margin-left: 0px;
+  margin-right: 0px;
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border: 10px solid rgb(169, 110, 0);
   background-color: darkblue;
 }
 
@@ -361,7 +342,6 @@ nav ul li a:hover {
   background-color: forestgreen;
 }
 
-/* Will need media query for section(s) below*/
 #contact-us {
   display: flex;
   justify-content: center;
@@ -382,8 +362,14 @@ footer {
   padding: 10px;
 }
 
+footer h2 {
+  display: flex;
+}
+
 #contacts {
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 #contacts :hover {
@@ -391,27 +377,73 @@ footer {
   transition: 0.4s;
 }
 
-#generateADifferentCampsiteListButton a:link, 
-a:visited, a:hover, a:active {
+#generateADifferentCampsiteListButton a:link,
+a:visited,
+a:hover,
+a:active {
   color: white;
   text-decoration-line: none;
 }
 
 
-/* MEDIA QUERIES FOR RESPONSIVENESS */  /* These are only samples and they can be changed by anyone. */
+/* MEDIA QUERIES FOR RESPONSIVENESS */
 
+@media (max-width: 900px) {
+  footer ul li a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 750px) {
+  footer ul li a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
 
 @media (max-width: 690px) {
   body {
-    margin: 5px;
+    margin: 10px;
     padding: 10px;
+  }
+}
+
+@media (max-width: 690px) {
+  .map
+  {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  footer ul li a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 20px;
   }
 }
 
 @media (max-width: 500px) {
   body {
-    margin: 0px;
-    padding: 0px;
+    margin: 5px;
+    padding: 5 px;
   }
 }
 
+@media (max-width: 500px) {
+  .map
+  {
+    display: flex;
+    flex-direction:column;
+  }
+}

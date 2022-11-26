@@ -285,6 +285,28 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber) {
     JSON.stringify(theCurrentSelectedCampsiteRecordInformation));
   // Update previous record selection information.
   thePreviousSelectedCampsiteRecordInformation = theCurrentSelectedCampsiteRecordInformation;
+  // test record content:
+  // window.alert("Current Selected Record: " + theCurrentSelectedCampsiteRecordInformation.toString());
+  // window.alert("Current Selected Record: " + campsitesPrimaryInformation[passedCampsiteRecordIDNumber]);
+  // window.alert(
+  //   "Last Listed Record:" + "\n" + 
+  //   "campsiteIDNumber: " + campsiteIDNumber + "\n" + 
+  //   "campsiteName: " + campsiteName + "\n" + 
+  //   "campsiteIDHTML: " + campsiteIDHTML + "\n" + 
+  //   "campsitePhoneNumber: " + campsitePhoneNumber + "\n" + 
+  //   "campsiteAddress: " + campsiteAddress + "\n" + 
+  //   "campsiteEmailAddress: " + campsiteEmailAddress + "\n" + 
+  //   "campsiteLatitude: " + campsiteLatitude + "\n" + 
+  //   "campsiteLongitude: " + campsiteLongitude + "\n" + 
+  //   "campsiteZIPCode: " + campsiteZIPCode);
+  ///////////////////////////////////////////////
+  // Alexa map process
+  location.replace("./map.html");
+  ///////////////////////////////////////////////
+  // Max reservation-/date-picker-related process
+  // <a possible call to a service fuction>
+  // <a possible location.replace("./?.html");
+  ///////////////////////////////////////////////
 }
 
 
@@ -357,6 +379,7 @@ function displayMainCampsiteRecordsDisplayAreaNavigationBar() {
   newMainRecordsListNavigationBarAreaField.value = "Type criteria text for the next search.";
   newMainRecordsListNavigationBarAreaField.style.width = "35%";
   newMainRecordsListNavigationBarAreaField.style.padding = "5px";
+  newMainRecordsListNavigationBarAreaField.setAttribute ("placeholder", "Search for sites...")
   newMainRecordsListNavigationBarArea.appendChild(newMainRecordsListNavigationBarAreaField);
   newMainRecordsListNavigationBarAreaField.addEventListener("click", function() {
     this.value = "";

@@ -2,8 +2,8 @@ var startDate = []
 var endDate = []
 var daysBetweenDates = []
 var confirmTrip= document.getElementById("confirmTrip")
-var campsiteName= localStorage.getItem("startdate")
-console.log(campsiteName)
+var parseData = JSON.parse(localStorage.getItem("ProjectCampLastSelectedCampsiteRecord"))
+var campsiteName= parseData[1]
 document.getElementById("campsiteName").innerHTML= " "+campsiteName
 //datepicker function, does not work with event listener but can be called with normal function
 $( function() {

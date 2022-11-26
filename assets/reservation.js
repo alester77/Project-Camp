@@ -71,6 +71,7 @@ localStorage.setItem("startdate", startDate)
 localStorage.setItem("enddate", endDate)
 document.getElementById("home").classList.remove("invisible")
 document.getElementById("veiwtrip").classList.remove("invisible")
+localStorage.setItem("reservation", "You have one reservation to " + campsiteName + " from " + startDate + " to " + endDate + ".")
 }
 
 document.getElementById("confirmTrip").addEventListener("click", returnDateDiffInDays)

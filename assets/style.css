@@ -1,4 +1,3 @@
-
 :root {
   --main-page-background-color: rgb(94, 93, 109);
 }
@@ -14,11 +13,15 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: rgb(224, 241, 251); /* or maybe rgb(165, 165, 165) or rgb(169, 110, 0); */
+  background-color: rgb(
+    224,
+    241,
+    251
+  ); /* or maybe rgb(165, 165, 165) or rgb(169, 110, 0); */
 }
 
 h1 {
-  font-size: 35px;
+  font-size: 55px;
   font-weight: bold;
   font-family: "Alfa Slab One", cursive;
   color: forestgreen;
@@ -27,6 +30,36 @@ h1 {
 
 h1 span {
   color: blue;
+}
+
+@media (max-width: 900px) {
+  h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 700px) {
+  h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
 }
 
 h2 {
@@ -77,6 +110,36 @@ footer {
   transform: scale(1.08);
 }
 
+@media (max-width: 900px) {
+  #mapButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  #mapButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  #mapButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
+
 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -99,6 +162,36 @@ footer {
   font-size: 50px;
   color: white;
   border-radius: 25px;
+}
+
+@media (max-width: 900px) {
+  .sites {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sites {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sites {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 30px;
+  }
 }
 
 /* Navigation Bar Header */
@@ -142,6 +235,36 @@ nav ul li {
   transition: 0.4s;
 }
 
+@media (max-width: 900px) {
+  .nav-bar ul li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-bar ul li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-bar ul li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    font-size: 20px;
+  }
+}
+
 #map {
   display: flex;
   border-radius: 25px;
@@ -175,7 +298,6 @@ nav ul li {
   justify-content: right;
 }
 
-
 /* ////////////////////////////////////////////////// */
 /* START SECTION: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) */
 #campsiteRecordListQueryCriteriaStatusField {
@@ -183,13 +305,14 @@ nav ul li {
   text-align: center;
 }
 
-#generateCampsiteInformationRecordListButtonSection { 
+#generateCampsiteInformationRecordListButtonSection {
   /* the button that is on the main page; not on the record list */
   text-align: center;
 }
 
 #generateCampsiteInformationRecordListButton,
-#hideCampsiteRecordListDisplayAreaButton {  /* the button that is on the main page; not on the record list */
+#hideCampsiteRecordListDisplayAreaButton {
+  /* the button that is on the main page; not on the record list */
   color: white;
   font-weight: bold;
   font-size: 20px;
@@ -336,7 +459,6 @@ nav ul li {
 /* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
 /* ////////////////////////////////////////////////// */
 
-
 #aboutus {
   border: black solid;
   border-radius: 45px;
@@ -384,6 +506,71 @@ footer h2 {
   transition: 0.4s;
 }
 
+#alexa-email :hover::after {
+  content: "alester0284@gmail.com";
+  color: orange;
+  position: absolute;
+  top: 150%;
+  left: 6.5%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  font-size: 30px;
+}
+
+#logan-email :hover::after {
+  content: "Loganj1127@gmail.com";
+  color: orange;
+  position: absolute;
+  top: 150%;
+  left: 24.5%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  font-size: 30px;
+}
+
+#max-email :hover::after {
+  content: "maxtribble@live.com";
+  color: orange;
+  position: absolute;
+  top: 150%;
+  left: 42.5%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  font-size: 30px;
+}
+
+#scott-email :hover::after {
+  content: "scottst.89@gmail.com";
+  color: orange;
+  position: absolute;
+  top: 150%;
+  left: 60%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  font-size: 30px;
+}
+
+#todd-email :hover::after {
+  content: "todd.kridel@gmail.com";
+  color: orange;
+  position: absolute;
+  top: 150%;
+  left: 77.5%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+  font-size: 30px;
+}
+
 #generateADifferentCampsiteListButton a:link,
 a:visited,
 a:hover,
@@ -392,26 +579,35 @@ a:active {
   text-decoration-line: none;
 }
 
-
 /* MEDIA QUERIES FOR RESPONSIVENESS */
 
 @media (max-width: 900px) {
-  footer ul li a {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-size: 35px;
-  }
-}
-
-@media (max-width: 750px) {
-  footer ul li a {
+  footer ul li a :hover::after{
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     font-size: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  footer ul li a :hover::after{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  footer ul li a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 10px;
   }
 }
 
@@ -423,20 +619,9 @@ a:active {
 }
 
 @media (max-width: 690px) {
-  .map
-  {
+  .map {
     display: flex;
     flex-direction: column;
-  }
-}
-
-@media (max-width: 500px) {
-  footer ul li a {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-size: 20px;
   }
 }
 
@@ -448,21 +633,23 @@ a:active {
 }
 
 @media (max-width: 500px) {
-  .map
-  {
+  .map {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
   }
 }
 
-#reservationDisplay{
+#reservationDisplay {
   text-align: center;
   margin-bottom: 50px;
   font-size: 22px;
   background-color: rgb(224, 241, 251);
   padding: 15px 10px 50px 10px;
 }
-#reservationsTitle{
+#reservationsTitle {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   font-weight: bold;
   font-size: 35px;
   position: relative;
@@ -476,3 +663,76 @@ a:active {
   border-radius: 25px;
   padding: 18px;
 }
+
+@media (max-width: 900px) {
+  #reservationsTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  #reservationsTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  #reservationsTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+  }
+}
+
+.weather-body {
+  background-image: url(./images/background-image-weather.jpg);
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.mainPageContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -70px;
+  font-weight: bold;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 17px;
+}
+
+#submitWeatherApiInformation {
+  background-color: forestgreen;
+  font-weight: bold;
+}
+
+#goBackToProjectCampWebpage {
+  background-color: forestgreen;
+  font-weight: bold;
+}
+
+#weather-note {
+  border: 5px double orange;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: auto;
+  background-color: forestgreen;
+  border-radius: 30px;
+}
+
+

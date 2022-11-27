@@ -395,11 +395,10 @@ function displayMainCampsiteRecordsDisplayAreaNavigationBar() {
   newMainRecordsListNavigationBarAreaButton.id = "campsiteRecordSearchButton";
   newMainRecordsListNavigationBarAreaButton.innerHTML = "Generate a New Campsite List";
   newMainRecordsListNavigationBarAreaButton.style.width = "auto";
-  newMainRecordsListNavigationBarAreaButton.style.height = "30px";
+  newMainRecordsListNavigationBarAreaButton.style.height = "auto";
   newMainRecordsListNavigationBarAreaButton.style.marginLeft = "30px";
   newMainRecordsListNavigationBarAreaButton.style.marginRight = "30px";
-  newMainRecordsListNavigationBarAreaButton.style.paddingLeft = "5px";
-  newMainRecordsListNavigationBarAreaButton.style.paddingRight = "5px";
+  newMainRecordsListNavigationBarAreaButton.style.padding = "10px";
   newMainRecordsListNavigationBarAreaButton.style.verticalAlign = "middle";
   newMainRecordsListNavigationBarAreaButton.style.color = "white";
   newMainRecordsListNavigationBarAreaButton.style.backgroundColor = "darkgray";
@@ -735,10 +734,10 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteLocationOnMapButton
       newCampsiteRecordSeparatorSectionButton.innerHTML = "Display This Campsite Location On The Map";
       newCampsiteRecordSeparatorSectionButton.style.width = "auto";
-      newCampsiteRecordSeparatorSectionButton.style.height = "30px";
+      newCampsiteRecordSeparatorSectionButton.style.height = "auto";
       newCampsiteRecordSeparatorSectionButton.style.marginLeft = "0px";
-      newCampsiteRecordSeparatorSectionButton.style.paddingLeft = "5px";
-      newCampsiteRecordSeparatorSectionButton.style.paddingRight = "5px";
+      newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
+      newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
       newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
       newCampsiteRecordSeparatorSectionButton.style.color = "white";
       newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
@@ -751,23 +750,15 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
         //window.alert(this.id);
         setIdOfCurrentCampsiteRecordSelection(this.id, "Map");
       });
-      //////////////////////////////////////////////////////
-      // for a button for Max's Reservation feature process
-      // for the buttons of the record navigation area
-      
-
-      
-      //
-      //////////////////////////////////////////////////////
       // for the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
       newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteWeatherForecastButton
       newCampsiteRecordSeparatorSectionButton.innerHTML = "View Campsite Location Weather Forecast";
       newCampsiteRecordSeparatorSectionButton.style.width = "auto";
-      newCampsiteRecordSeparatorSectionButton.style.height = "30px";
-      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "0px";
-      newCampsiteRecordSeparatorSectionButton.style.paddingLeft = "5px";
-      newCampsiteRecordSeparatorSectionButton.style.paddingRight = "5px";
+      newCampsiteRecordSeparatorSectionButton.style.height = "auto";
+      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "100px";
+      newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
+      newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
       newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
       newCampsiteRecordSeparatorSectionButton.style.color = "white";
       newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
@@ -776,16 +767,23 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
         setIdOfCurrentCampsiteRecordSelection(this.id, "Weather");
       });
+      //////////////////////////////////////////////////////
+      // for a button for Max's Reservation feature process
+      // for the buttons of the record navigation area
+      // ...
+      // ...
+      // ... 
+      //////////////////////////////////////////////////////
       // the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
       newCampsiteRecordSeparatorSectionButton.id = "generateADifferentCampsiteListButton";
       newCampsiteRecordSeparatorSectionButton.innerHTML = 
         "<a href=#campsiteDisplayAreaTitleSection>Go Up To Generate A New Campsite List</a>";
       newCampsiteRecordSeparatorSectionButton.style.width = "auto";
-      newCampsiteRecordSeparatorSectionButton.style.height = "30px";
-      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "150px";
-      newCampsiteRecordSeparatorSectionButton.style.paddingLeft = "5px";
-      newCampsiteRecordSeparatorSectionButton.style.paddingRight = "5px";
+      newCampsiteRecordSeparatorSectionButton.style.height = "auto";
+      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "100px";
+      newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
+      newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
       newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
       newCampsiteRecordSeparatorSectionButton.style.color = "white";
       newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";

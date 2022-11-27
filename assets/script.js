@@ -307,6 +307,9 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
   ///////////////////////////////////////////////
   // for Max's reservation-/date-picker-related process
   // <a possible call to a service function>
+  if (passedProcessMode == "Reservation") {
+    location.replace("./reservation.html");  //  the URL of the Campsite Map feature sub-webpage
+  }
   // <a possible location.replace("./?.html");
   ///////////////////////////////////////////////
   // for Todd's weather forecast feature
@@ -754,9 +757,22 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       //////////////////////////////////////////////////////
       // for a button for Max's Reservation feature process
       // for the buttons of the record navigation area
-      
-
-      
+      newCampsiteRecordSeparatorSectionButton = document.createElement("button");
+      newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteLocationOnMapButton
+      newCampsiteRecordSeparatorSectionButton.innerHTML = "Make a Reservation for this Campsite";
+      newCampsiteRecordSeparatorSectionButton.style.width = "auto";
+      newCampsiteRecordSeparatorSectionButton.style.height = "30px";
+      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "0px";
+      newCampsiteRecordSeparatorSectionButton.style.paddingLeft = "5px";
+      newCampsiteRecordSeparatorSectionButton.style.paddingRight = "5px";
+      newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
+      newCampsiteRecordSeparatorSectionButton.style.color = "white";
+      newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
+      newCampsiteRecordSeparatorSection.appendChild(newCampsiteRecordSeparatorSectionButton);
+      // Event Listener/Handler for the "reservation page" Button of the selected campsite.
+      newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
+        setIdOfCurrentCampsiteRecordSelection(this.id, "Reservation");
+      });
       //
       //////////////////////////////////////////////////////
       // for the buttons of the record navigation area

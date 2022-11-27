@@ -73,7 +73,7 @@
 <!-- <script src="./MAYBE IMPORT THE MAIN JS FILE"></script> -->
 <script> 
 /* -- src="./assets/js/script.js"> */
-//
+var anErrorConditionExists = false;
 //
 // Load from local storage the previously-saved array variable that holds the entire list of campsite records that 
 // were generated during the current campsite search. Then import the involved campsite record based on the ID that 
@@ -82,14 +82,60 @@
 var selectedCampsiteRecord = JSON.parse(localStorage.getItem("ProjectCampLastSelectedCampsiteRecord"));
 // Campsite Location Latitude: <input id="campsiteLocationLatitude" value="39.742043" default for Denver/>
 // Campsite Location Longitude: <input id="campsiteLocationLongitude" value="-104.991531" default for Denver/>
-var campsiteLatitude = selectedCampsiteRecord[6];
-if (campsiteLatitude == "0") {
-  campsiteLatitude = "39.742043";  // default for Denver
+//window.alert(selectedCampsiteRecord);
+if (selectedCampsiteRecord != null) {
+  var campsiteLatitude = selectedCampsiteRecord[7];
+  if ((campsiteLatitude != null) && (campsiteLatitude != undefined)) {
+    if (campsiteLatitude == "0") {  // a non-coordinate campsite record
+      anErrorConditionExists = false;
+      campsiteLatitude = "39.742043";  // default for Denver
+    }
+    else {
+      anErrorConditionExists = false;
+    }
+  }
+  else { 
+    anErrorConditionExists = false;
+    campsiteLatitude = "39.742043";
+  }
+}
+else {
+  if (campsiteLatitude == undefined) {
+    anErrorConditionExists = false;
+    campsiteLatitude = "39.742043";
+  }
+  else {
+    anErrorConditionExists = true;
+    campsiteLatitude = "39.742043";
+  }
 }
 document.getElementById("campsiteLocationLatitude").value = campsiteLatitude;
-var campsiteLongitude = selectedCampsiteRecord[7];
-if (campsiteLongitude == "0") {
-  campsiteLongitude = "-104.991531";  // default for Denver
+//
+if (selectedCampsiteRecord != null) {
+  var campsiteLongitude = selectedCampsiteRecord[7];
+  if ((campsiteLongitude != null) && (campsiteLongitude != undefined)) {
+    if (campsiteLongitude == "0") {  // a non-coordinate campsite record
+      anErrorConditionExists = false;
+      campsiteLongitude = "-104.991531";  // default for Denver
+    }
+    else {
+      anErrorConditionExists = false;
+    }
+  }
+  else { 
+    anErrorConditionExists = false;
+    campsiteLongitude = "-104.991531";
+  }
+}
+else {
+  if (campsiteLongitude == undefined) {
+    anErrorConditionExists = false;
+    campsiteLongitude = "-104.991531";
+  }
+  else {
+    anErrorConditionExists = true;
+    campsiteLongitude = "-104.991531";
+  }
 }
 document.getElementById("campsiteLocationLongitude").value = campsiteLongitude;
 //
@@ -122,22 +168,28 @@ var campsiteWeatherForecastDisplayArea = document.getElementById("displayAreaFor
 //
 //
 function getCampsiteWeatherForecast(passedCampsiteLatitude, passedCampsiteLongitude) {
-    // Build the URL--including the necessary query parameters--that is required for obtaining the desired data
-    // from the API system.
-    var requestWeatherUrlBase = "https://api.openweathermap.org/data/2.5/forecast";
-    var weatherApiKey = "993d2f12ebc448e7d897eca3a201a7c2";
-    var forecastDaySpan = "5";
-    var requestWeatherUrl = requestWeatherUrlBase + "?" + "lat=" + passedCampsiteLatitude + "&lon=" + 
-        passedCampsiteLongitude + "&cnt=" + forecastDaySpan + "&units=imperial" + "&appid=" + weatherApiKey;
-    //
-    //window.alert(requestWeatherUrl);
-    // Parse-Process the raw bulk data array that was returned from the fetch query to the weather API system.
-    //
-    // Use an object variable to receive the raw data-set that is from the API system.
-    var theForecastProcessing = getApi(requestWeatherUrl);
-    // Use a set of individual data-component string variables to hold the various weather sub-array data that
-    // each will be converted to a string representation by using the object internal toString functions.
-    var location = theForecastProcessing.city.name;
+  // Build the URL--including the necessary query parameters--that is required for obtaining the desired data
+  // from the API system.
+  var requestWeatherUrlBase = "https://api.openweathermap.org/data/2.5/forecast";
+  var weatherApiKey = "993d2f12ebc448e7d897eca3a201a7c2";
+  var forecastDaySpan = "5";
+  var requestWeatherUrl = requestWeatherUrlBase + "?" + "lat=" + passedCampsiteLatitude + "&lon=" + 
+      passedCampsiteLongitude + "&cnt=" + forecastDaySpan + "&units=imperial" + "&appid=" + weatherApiKey;
+  //
+  //window.alert(requestWeatherUrl);
+  // Parse-Process the raw bulk data array that was returned from the fetch query to the weather API system.
+  //
+  // Use an object variable to receive the raw data-set that is from the API system.
+  var theForecastProcessing = getApi(requestWeatherUrl);
+  //var theForecastProcessing = getApi("https://api.openweathermap.org/data/2.5/forecast" + 
+  //  "?lat=39.742043&lon=-104.991531&cnt=5&units=imperial&appid=993d2f12ebc448e7d897eca3a201a7c2");
+  //
+  // Use a set of individual data-component string variables to hold the various weather sub-array data that
+  // each will be converted to a string representation by using the object internal toString functions.
+  //window.alert("theForecastingProcessing: " + theForecastProcessing);
+  if (anErrorConditionExists == false) {
+    //window.alert("anErrorConditionExists == false");
+      var location = theForecastProcessing.city.name;
     var day1 = "";
     var day2 = "";
     var day3 = "";
@@ -146,7 +198,7 @@ function getCampsiteWeatherForecast(passedCampsiteLatitude, passedCampsiteLongit
     //
     // Use a compilation string variable to assemble the final weather summary information that will be displayed
     // in the application to the user for the selected campsite.
-    var the5DayForecast = "";
+    // var the5DayForecast = "";
     // 2 primary data-set arrays of weather data are in the response weather object array: "city" (for the location
     // attributes) and "list" (for the details of the 5 forecast days).
     //
@@ -285,40 +337,42 @@ function getCampsiteWeatherForecast(passedCampsiteLatitude, passedCampsiteLongit
     day4 + "\n" + 
     day5 + "\n" + 
     "\n";
-   
+    
     displayAreaForCampsiteWeatherInformation.innerHTML = the5DayForecast;
     
     // Save the generated weather forecast information to local storage for possible later access/viewing.  
     localStorage.setItem("ProjectCampCampsite5DayForecast", JSON.stringify(the5DayForecast));
     //<variable>=JSON.parse(localStorage.getItem("ProjectCampCampsite5DayForecast"));  // for possible re-loading
-  //  
-}
-
+  }
+  else {
+    displayAreaForCampsiteWeatherInformation.innerHTML = "ERROR: " + requestWeatherUrl
+  }
+  //
+}  
 // the basic API fetch-transmit function and data response-return process function
-
 function getApi(requestUrl) {
-    var data = null;
-    fetch(requestUrl)
-    .then(function (response) {
-        if (response.status === 400) {
-            //page_element.textContent = "FETCH ERROR: " + response.status;
-            console.log(response);
-        }
-        return response.json();
-    }) .then(function(data){
-    //window.alert("fetch response processing");
-    //console.log(data);
-    // Save to local storage for later retrieval and accessing the array variable that holds the entire list
-    // of campsite weather data records that were retrieved during the current campsite weather search.
-    var campsiteFetchResponseDataRawObject = data; 
-        // the campsite weather data component of the response data object
-    localStorage.setItem("campsiteWeatherFetchResponseDataRawObject", 
-        JSON.stringify(campsiteWeatherFetchResponseDataRawObject));
-    });
-    // Load from local storage for processing the array variable that holds the entire list of campsite weather
-    // data records that were retrieved during the current campsite weather search. Then return/send that array
-    // variable to the main part of the program for additional processing.   
-    return JSON.parse(localStorage.getItem("campsiteWeatherFetchResponseDataRawObject"));
+  var data = null;
+  fetch(requestUrl)
+  .then(function (response) {
+      if (response.status === 400) {
+          //page_element.textContent = "FETCH ERROR: " + response.status;
+          console.log(response);
+      }
+      return response.json();
+  }) .then(function(data){
+  //window.alert("fetch response processing");
+  console.log(data);
+  // Save to local storage for later retrieval and accessing the array variable that holds the entire list
+  // of campsite weather data records that were retrieved during the current campsite weather search.
+  var campsiteWeatherFetchResponseDataRawObject = data; 
+      // the campsite weather data component of the response data object
+  localStorage.setItem("campsiteWeatherFetchResponseDataRawObject", 
+      JSON.stringify(campsiteWeatherFetchResponseDataRawObject));
+  });
+  // Load from local storage for processing the array variable that holds the entire list of campsite weather
+  // data records that were retrieved during the current campsite weather search. Then return/send that array
+  // variable to the main part of the program for additional processing.   
+  return JSON.parse(localStorage.getItem("campsiteWeatherFetchResponseDataRawObject"));
 }
 
 </script>

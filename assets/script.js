@@ -306,6 +306,11 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
     location.replace("./map.html");  //  the URL of the Campsite Map feature sub-webpage
   }
   ///////////////////////////////////////////////
+  // for Max's reservation-/date-picker-related process
+  if (passedProcessMode == "Reservation") {
+    location.replace("./reservation.html");  //  the URL of the Campsite Reservation feature sub-webpage
+  }
+  ///////////////////////////////////////////////
   // for Todd's weather forecast feature
   if (passedProcessMode == "Weather") {
     location.replace("./weather.html");  //  the URL of the Campsite Weather feature sub-webpage
@@ -728,11 +733,14 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecord.appendChild(newCampsiteRecordSeparatorSection);
       // the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
+      //////////////////////////////////////////////////////
+      // for a button for Alexa's Map feature process
       newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteLocationOnMapButton
       newCampsiteRecordSeparatorSectionButton.innerHTML = "Display This Campsite Location On The Map";
       newCampsiteRecordSeparatorSectionButton.style.width = "auto";
       newCampsiteRecordSeparatorSectionButton.style.height = "auto";
-      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "0px";
+      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "50px";
+      newCampsiteRecordSeparatorSectionButton.style.marginRight = "50px";
       newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
       newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
       newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
@@ -747,13 +755,15 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
         //window.alert(this.id);
         setIdOfCurrentCampsiteRecordSelection(this.id, "Map");
       });
+      //////////////////////////////////////////////////////
       // for the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
       newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteWeatherForecastButton
       newCampsiteRecordSeparatorSectionButton.innerHTML = "View Campsite Location Weather Forecast";
       newCampsiteRecordSeparatorSectionButton.style.width = "auto";
       newCampsiteRecordSeparatorSectionButton.style.height = "auto";
-      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "100px";
+      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "50px";
+      newCampsiteRecordSeparatorSectionButton.style.marginRight = "50px";
       newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
       newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
       newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
@@ -764,6 +774,27 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
         setIdOfCurrentCampsiteRecordSelection(this.id, "Weather");
       });
+      //////////////////////////////////////////////////////
+      // for a button for Max's Reservation feature process
+      // for the buttons of the record navigation area
+      newCampsiteRecordSeparatorSectionButton = document.createElement("button");
+      newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteReservationButton
+      newCampsiteRecordSeparatorSectionButton.innerHTML = "Make a Reservation for this Campsite";
+      newCampsiteRecordSeparatorSectionButton.style.width = "auto";
+      newCampsiteRecordSeparatorSectionButton.style.height = "auto";
+      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "50px";
+      newCampsiteRecordSeparatorSectionButton.style.marginRight = "50px";
+      newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
+      newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
+      newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
+      newCampsiteRecordSeparatorSectionButton.style.color = "white";
+      newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
+      newCampsiteRecordSeparatorSection.appendChild(newCampsiteRecordSeparatorSectionButton);
+      // Event Listener/Handler for the "reservation page" Button of the selected campsite.
+      newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
+        setIdOfCurrentCampsiteRecordSelection(this.id, "Reservation");
+      });
+      //////////////////////////////////////////////////////
       // the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
       newCampsiteRecordSeparatorSectionButton.id = "generateADifferentCampsiteListButton";
@@ -771,7 +802,8 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
         "<a href=#campsiteDisplayAreaTitleSection>Go Up To Generate A New Campsite List</a>";
       newCampsiteRecordSeparatorSectionButton.style.width = "auto";
       newCampsiteRecordSeparatorSectionButton.style.height = "auto";
-      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "100px";
+      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "50px";
+      newCampsiteRecordSeparatorSectionButton.style.marginRight = "50px";
       newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
       newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
       newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
@@ -839,3 +871,8 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
 //
 ///////////////////////////////////////////////
 
+//////////////////////
+// Code for displaying reservation
+if(localStorage.getItem("reservation") === null){
+  document.getElementById("reservation").innerHTML = "You have no reservations booked at this time."
+} else { document.getElementById("reservation").innerHTML = localStorage.getItem("reservation")}

@@ -84,7 +84,7 @@ var selectedCampsiteRecord = JSON.parse(localStorage.getItem("ProjectCampLastSel
 // Campsite Location Longitude: <input id="campsiteLocationLongitude" value="-104.991531" default for Denver/>
 //window.alert(selectedCampsiteRecord);
 if (selectedCampsiteRecord != null) {
-  var campsiteLatitude = selectedCampsiteRecord[7];
+  var campsiteLatitude = selectedCampsiteRecord[6];
   if ((campsiteLatitude != null) && (campsiteLatitude != undefined)) {
     if (campsiteLatitude == "0") {  // a non-coordinate campsite record
       anErrorConditionExists = false;

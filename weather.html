@@ -31,19 +31,8 @@
             <p style="text-align: center">Campsite Location Longitude: <input id="campsiteLocationLongitude"/></p>
                 <!-- default: value="-104.991531" for Denver -->
             <p style="text-align: center">Note: These fields auto-import from the Project Camp website application,
-                but you can enter your own search coordinates (if known)</p>
+                but you can enter your own search coordinates (if known).</p>
             <br>  <!-- intentional space -->
-            <div id="buttonArea" style="align-items: center">
-                <p style="text-align: center">
-                    <button id="submitWeatherApiInformation" 
-                        style="text-align: center; font-weight: bold; padding: 10px; border: 2px double darkblue; 
-                            border-radius: 15px" 
-                        onclick="getCampsiteWeatherForecastAPI()">
-                        Get 5-Day Weather Forecast For The Selected Campsite
-                    </button>
-                </p>
-                <br>  <!-- intentional space -->
-            </div>
             <div id="displaySectionForCampsiteWeatherInformation" style="display: flex; justify-content: center">
                 <div>
                     <textarea id="displayAreaForCampsiteWeatherInformation" readonly style="width: 300px; height: 500px; 
@@ -55,12 +44,23 @@
                 <br>  <!-- intentional space -->
                 <p style="text-align: center">
                     <button id="goBackToProjectCampWebpage"
-                        style="text-align: center; font-weight: bold; padding: 10px; border: 2px double darkblue; 
+                        style="text-align: center; font-weight: bold; padding: 10px; border: 5px double orange; 
                         border-radius: 15px"
                         onclick="goBackToTheProjectCampWebpage()">
                         Go Back To The Project Camp Webpage
                     </button>
                 </p>
+            </div>
+            <div id="buttonArea" style="align-items: center">
+                <p style="text-align: center">
+                    <button id="submitWeatherApiInformation" 
+                        style="text-align: center; font-weight: bold; padding: 10px; border: 2px double darkblue; 
+                            border-radius: 15px" 
+                        onclick="getCampsiteWeatherForecastAPI()">
+                        Get 5-Day Weather Forecast For The User-Specified Coordinates (if any) At Above
+                    </button>
+                </p>
+                <br>  <!-- intentional space -->
             </div>
         </div>
     </div>
@@ -80,6 +80,7 @@ var campsiteLongitude = "";
 var anErrorConditionExists = false;
 var aNoCoordinateCampsiteRecord = false;
 var campsiteWeatherForecastDisplayArea = document.getElementById("displayAreaForCampsiteWeatherInformation");
+campsiteWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
 // Load from local storage the previously-saved array variable that holds the involved selected campsite record that
 // was saved by the process of the "Show 5-Day Weather Forecast" button that was clicked on the campsite record.
 var selectedCampsiteRecord = JSON.parse(localStorage.getItem("ProjectCampLastSelectedCampsiteRecord"));
@@ -143,6 +144,8 @@ else {
   }
 }  // Display the involved selected longitude coordinate on the webpage.
 document.getElementById("campsiteLocationLongitude").value = campsiteLongitude;
+// Generate an initial display of weather forecast information for the selected campsite.
+getCampsiteWeatherForecastAPI();
 
 
 function goBackToTheProjectCampWebpage() {
@@ -154,7 +157,7 @@ window.location.href = "./index.html";  //  the URL of the main Project Campsite
 }
 
 
-function getCampsiteWeatherForecastAPI () {
+function getCampsiteWeatherForecastAPI() {
 // Use the "OpenWeatherMap" API system to obtain a weather forecast for a selected campsite location for a 
 // selected forecast time-span starting from the current date. The location is specified in the form of 
 // latitude and longitude coordinates...and the time-span is between 1 and 5 days (with a default of 5). Those items 
@@ -176,8 +179,10 @@ function getCampsiteWeatherForecastAPI () {
 // EXAMPLE (for Denver; Latitude/&lat: 39.742043, Longitude/&lon: -104.991531): 
 // https://api.openweathermap.org/data/2.5/forecast?lat=39.742043&lon=-104.991531&cnt=5&units=imperial&appid=993d2f12ebc448e7d897eca3a201a7c2
 //
-//campsiteLatitude = getElementById("campsiteLocationLatitude").value;  // enhancement: allow on-change user entry event
-//campsiteLongitude = getElementById("campsiteLocationLongitude").value;  // enhancement: allow on-change user entry event
+campsiteLatitude = document.getElementById("campsiteLocationLatitude").value;
+  // enhancement: allow on-change user entry event; instead of only auto-import of coordinate information
+campsiteLongitude = document.getElementById("campsiteLocationLongitude").value;
+  // enhancement: allow on-change user entry event; instead of only auto-import of coordinate information
 //
 // Build the URL--including the necessary query parameters--that is required for obtaining the desired data
 // from the API system.
@@ -188,6 +193,7 @@ var requestWeatherUrl = requestWeatherUrlBase + "?" + "lat=" + campsiteLatitude 
   "&cnt=" + forecastDaySpan + "&units=imperial" + "&appid=" + weatherApiKey;
 //window.alert(requestWeatherUrl);
 // Get the weather data from the API service.
+campsiteWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
 getApi(requestWeatherUrl);
 }
 
@@ -203,6 +209,7 @@ fetch(requestUrl)
     }
     return response.json();
 }) .then(function(data){
+campsiteWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
 console.log(data);
 // Save to memory for later retrieval and accessing the array variable that holds the entire list of campsite weather
 // data records that were retrieved during the current campsite weather search.
@@ -390,10 +397,17 @@ if (anErrorConditionExists == false) {
   day2 + "\n" + 
   day3 + "\n" + 
   day4 + "\n" + 
-  day5 + "\n" + 
-  "\n";
+  day5;
   //
-  displayAreaForCampsiteWeatherInformation.innerHTML = the5DayForecast;
+  // Continue the status display when the API process is processing.
+  var countdownTimer = 1;
+  initializationInterval = setInterval(function() {
+    countdownTimer--;
+    if (countdownTimer <= 0 ) {
+      clearInterval(initializationInterval);
+      displayAreaForCampsiteWeatherInformation.innerHTML = the5DayForecast;
+    }
+  }, 1000);
   //
   // POSSIBLE OPTION FOR A FUTURE ENHANCEMENT/EXPANSION:
   // Save the generated weather forecast information to local storage for possible later access/viewing.  
@@ -848,3 +862,4 @@ http://bulk.openweathermap.org/sample/
 
 
 -->
+

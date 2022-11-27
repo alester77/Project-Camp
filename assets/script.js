@@ -298,16 +298,13 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
   //   "campsiteEmailAddress: " + campsiteEmailAddress + "\n" + 
   //   "campsiteLatitude: " + campsiteLatitude + "\n" + 
   //   "campsiteLongitude: " + campsiteLongitude + "\n" + 
-  //   "campsiteZIPCode: " + campsiteZIPCode);
+  //   "campsiteZIPCode: " + campsiteZIPCode + "\n" + 
+  //   "campsiteMediaURL: " + campsiteMediaURL);
   ///////////////////////////////////////////////
   // for Alexa's map process
   if (passedProcessMode == "Map") {
     location.replace("./map.html");  //  the URL of the Campsite Map feature sub-webpage
   }
-  ///////////////////////////////////////////////
-  // for Max's reservation-/date-picker-related process
-  // <a possible call to a service function>
-  // <a possible location.replace("./?.html");
   ///////////////////////////////////////////////
   // for Todd's weather forecast feature
   if (passedProcessMode == "Weather") {
@@ -767,13 +764,6 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
         setIdOfCurrentCampsiteRecordSelection(this.id, "Weather");
       });
-      //////////////////////////////////////////////////////
-      // for a button for Max's Reservation feature process
-      // for the buttons of the record navigation area
-      // ...
-      // ...
-      // ... 
-      //////////////////////////////////////////////////////
       // the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
       newCampsiteRecordSeparatorSectionButton.id = "generateADifferentCampsiteListButton";

@@ -176,7 +176,13 @@ nav ul li {
 }
 
 
+/* ////////////////////////////////////////////////// */
 /* START SECTION: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA (PER FETCH TO AND RESPONSE FROM THE "RIDB.RECREATION.GOV" WEBSITE) */
+#campsiteRecordListQueryCriteriaStatusField {
+  font-size: 20px;
+  text-align: center;
+}
+
 #generateCampsiteInformationRecordListButtonSection { 
   /* the button that is on the main page; not on the record list */
   text-align: center;
@@ -328,6 +334,7 @@ nav ul li {
   padding-right: 20px;
 }
 /* END: CAMPSITE INFORMATION RECORD LIST DISPLAY AREA */
+/* ////////////////////////////////////////////////// */
 
 
 #aboutus {

@@ -298,7 +298,8 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
   //   "campsiteEmailAddress: " + campsiteEmailAddress + "\n" + 
   //   "campsiteLatitude: " + campsiteLatitude + "\n" + 
   //   "campsiteLongitude: " + campsiteLongitude + "\n" + 
-  //   "campsiteZIPCode: " + campsiteZIPCode);
+  //   "campsiteZIPCode: " + campsiteZIPCode + "\n" + 
+  //   "campsiteMediaURL: " + campsiteMediaURL);
   ///////////////////////////////////////////////
   // for Alexa's map process
   if (passedProcessMode == "Map") {
@@ -306,11 +307,9 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
   }
   ///////////////////////////////////////////////
   // for Max's reservation-/date-picker-related process
-  // <a possible call to a service function>
   if (passedProcessMode == "Reservation") {
-    location.replace("./reservation.html");  //  the URL of the Campsite Map feature sub-webpage
+    location.replace("./reservation.html");  //  the URL of the Campsite Reservation feature sub-webpage
   }
-  // <a possible location.replace("./?.html");
   ///////////////////////////////////////////////
   // for Todd's weather forecast feature
   if (passedProcessMode == "Weather") {
@@ -736,7 +735,6 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
       //////////////////////////////////////////////////////
       // for a button for Alexa's Map feature process
-      //
       newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteLocationOnMapButton
       newCampsiteRecordSeparatorSectionButton.innerHTML = "Display This Campsite Location On The Map";
       newCampsiteRecordSeparatorSectionButton.style.width = "auto";
@@ -757,7 +755,6 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
         //window.alert(this.id);
         setIdOfCurrentCampsiteRecordSelection(this.id, "Map");
       });
-      //
       //////////////////////////////////////////////////////
       // for the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
@@ -780,7 +777,6 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       //////////////////////////////////////////////////////
       // for a button for Max's Reservation feature process
       // for the buttons of the record navigation area
-      //
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
       newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteReservationButton
       newCampsiteRecordSeparatorSectionButton.innerHTML = "Make a Reservation for this Campsite";
@@ -789,7 +785,7 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.style.marginLeft = "50px";
       newCampsiteRecordSeparatorSectionButton.style.marginRight = "50px";
       newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
-      newCampsiteRecordSeparatorSectionButton.style.paddingLeft = "10px";
+      newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
       newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
       newCampsiteRecordSeparatorSectionButton.style.color = "white";
       newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
@@ -798,7 +794,6 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
         setIdOfCurrentCampsiteRecordSelection(this.id, "Reservation");
       });
-      //
       //////////////////////////////////////////////////////
       // the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");

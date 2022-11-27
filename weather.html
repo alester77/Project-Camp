@@ -26,10 +26,10 @@
             <p style="text-align: center">(Based on Latitude and Longitude Coordinates)</p>
             <br>  <!-- intentional space -->
             <br>  <!-- intentional space -->
-            <p style="text-align: center">Campsite Location Latitude: <input id="campsiteLocationLatitude"
-                value="39.742043"/></p> <!-- for Denver -->
-            <p style="text-align: center">Campsite Location Longitude: <input id="campsiteLocationLongitude"
-                value="-104.991531"/></p> <!-- for Denver -->
+            <p style="text-align: center">Campsite Location Latitude: <input id="campsiteLocationLatitude"/></p>
+                <!-- default: value="39.742043" for Denver -->
+            <p style="text-align: center">Campsite Location Longitude: <input id="campsiteLocationLongitude"/></p>
+                <!-- default: value="-104.991531" for Denver -->
             <p style="text-align: center">Note: These fields auto-import from the Project Camp website application,
                 but you can enter your own search coordinates (if known)</p>
             <br>  <!-- intentional space -->
@@ -315,9 +315,9 @@ function getApi(requestUrl) {
     localStorage.setItem("campsiteWeatherFetchResponseDataRawObject", 
         JSON.stringify(campsiteWeatherFetchResponseDataRawObject));
     });
-    // Load from local storage the previously-saved array variable that holds the entire list of campsite records 
-    // that were retrieved during the current campsite search. Then return/send that array variable to the main
-    // part of the program for additional processing.   
+    // Load from local storage for processing the array variable that holds the entire list of campsite weather
+    // data records that were retrieved during the current campsite weather search. Then return/send that array
+    // variable to the main part of the program for additional processing.   
     return JSON.parse(localStorage.getItem("campsiteWeatherFetchResponseDataRawObject"));
 }
 

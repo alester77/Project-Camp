@@ -5,7 +5,9 @@ var coorLong = campsiteRecordArray[7];
 var coorLat = campsiteRecordArray[6];
 console.log(coorLat + "," + coorLong);
 
-
+function displayCord(){
+  document.getElementById(coordinates).innerHTML= coorLong + coorLat
+}
 
 
 // 6 and 7 are lat and long for Todd's js array
@@ -15,7 +17,7 @@ console.log(coorLat + "," + coorLong);
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxlc3Rlcjc3IiwiYSI6ImNsYWtpcHBqcTBoMXAzb281MjFlbnh1MTgifQ.CrtkBGN16fbxAobQEpAXdQ';
 const map = new mapboxgl.Map({
 container: 'map',
-// Default is set to Denver
+// Opens map to the chosen campsite area
 style: 'mapbox://styles/mapbox/streets-v12',
 center: [coorLong, coorLat],
 zoom: 10
@@ -75,8 +77,9 @@ map.addControl(
 new MapboxGeocoder({
 accessToken: mapboxgl.accessToken,
 localGeocoder: coordinatesGeocoder,
-zoom: 12,
-placeholder: 'Enter Coordinates',
+zoom: 10,
+placeholder: "          Enter Coordinates",
+padding: 0,
 mapboxgl: mapboxgl,
 reverseGeocode: true
 
@@ -85,3 +88,5 @@ reverseGeocode: true
 
 
 );
+
+

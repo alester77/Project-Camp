@@ -582,7 +582,7 @@ a:active {
 /* MEDIA QUERIES FOR RESPONSIVENESS */
 
 @media (max-width: 900px) {
-  footer ul li a :hover::after{
+  footer ul li a :hover::after {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -592,7 +592,7 @@ a:active {
 }
 
 @media (max-width: 700px) {
-  footer ul li a :hover::after{
+  footer ul li a :hover::after {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -704,7 +704,7 @@ a:active {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: -70px;
+  margin-top: -60px;
   font-weight: bold;
 }
 
@@ -729,10 +729,9 @@ a:active {
   border: 5px double orange;
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 17px;
   margin: auto;
   background-color: forestgreen;
-  border-radius: 30px;
+  border-radius: 50px;
+  font-size: 15px;
 }
-
-

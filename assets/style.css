@@ -696,7 +696,7 @@ a:active {
 
 .weather-body {
   background-image: url(./images/background-image-weather.jpg);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 

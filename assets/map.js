@@ -5,14 +5,12 @@ var coorLong = campsiteRecordArray[7];
 var coorLat = campsiteRecordArray[6];
 console.log(coorLat + "," + coorLong);
 
-function displayCord(){
-  document.getElementById(coordinates).innerHTML= coorLong + coorLat
-}
+
 
 
 // 6 and 7 are lat and long for Todd's js array
 
-
+function displayMap(){
 // found through mapBox
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxlc3Rlcjc3IiwiYSI6ImNsYWtpcHBqcTBoMXAzb281MjFlbnh1MTgifQ.CrtkBGN16fbxAobQEpAXdQ';
 const map = new mapboxgl.Map({
@@ -89,4 +87,11 @@ reverseGeocode: true
 
 );
 
+}
+displayMap();
 
+function displayCord(){
+  document.getElementById("mapLongitude").value = coorLong;
+  document.getElementById("mapLatitude").value = coorLat;
+}
+displayCord();

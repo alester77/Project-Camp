@@ -32,18 +32,21 @@
             id="weather-note"
             style="font-weight: bolder; color: white; text-align: center"
           >
-            (Based on Campsite Latitude and Longitude Coordinates)<br />
-            <br />  <!-- intentional space -->
-            <span style="color: blue">Note:</span> These fields auto-import from
-            the Project Camp website application, but you can enter your own
-            search coordinates (if known).<br />
-            <br />  <!-- intentional space -->
+            (Based on Campsite Latitude and Longitude Coordinates)
             &nbsp&nbsp&nbsp&nbsp&nbsp <!-- non-breaking space separator -->
             Location Latitude: <input id="campsiteLocationLatitude" width="100"/>
             <!-- default: value="39.742043" for Denver -->
             &nbsp&nbsp&nbsp&nbsp&nbsp <!-- non-breaking space separator -->
             Location Longitude: <input id="campsiteLocationLongitude" width="100"/>
             <!-- default: value="-104.991531" for Denver -->
+          </p>
+          <p
+            id="weather-note"
+            style="font-weight: bolder; color: white; text-align: center"
+          >
+            <span style="color: blue">Note:</span> These fields auto-import from
+            the Project Camp website application, but you can enter your own
+            search coordinates (if known).
           </p>
           <br />  <!-- intentional space -->
           <div id="buttonArea" style="align-items: center">
@@ -325,7 +328,8 @@ if (anErrorConditionExists == false) {
   for (recordCounterProcess = 0; recordCounterProcess < 39; recordCounterProcess++) { 
     // include for display only the 6:00am record and the 12:00pm record and the 6:00pm record
     //window.alert(recordDayCounter);
-    if ((recordCounterTime == 1) || (recordCounterTime == 3) || (recordCounterTime ==  5)) {
+      if ((recordCounterTime == 0) || (recordCounterTime == 2) || (recordCounterTime ==  4)) {
+        // alternate: ((recordCounterTime == 1) || (recordCounterTime == 3) || (recordCounterTime ==  5))
       the5DayForecast = the5DayForecast + 
       location + "\n" + 
       "=================================" + "\n" + 

@@ -6,6 +6,7 @@ var parseData = JSON.parse(localStorage.getItem("ProjectCampLastSelectedCampsite
 var campsiteName= parseData[1]
 document.getElementById("campsiteName").innerHTML= " "+campsiteName
 //datepicker function, does not work with event listener but can be called with normal function
+//2 date piickers, one start date and one end date
 $( function() {
   $( ".firstdatepicker" ).datepicker({
     minDate: new Date(),
@@ -31,7 +32,7 @@ $( function() {
     
   });
 } );
-
+// dynamically printing the date pickers to the page
 function printDatePicker(){
   var date1 = document.getElementById("date1")//where you want the dates to appear
   var date2 = document.getElementById("date2")

@@ -64,6 +64,7 @@
                   width: 425px;
                   height: 350px;
                   padding: 30px;
+                  margin-bottom: 20px;
                   background-color: white;
                   color: black;
                   border: 10px double darkblue;
@@ -73,23 +74,6 @@
             </div>
           </div>
           <div>
-            <br />  <!-- intentional space -->
-            <p style="text-align: center">
-              <button
-                id="goBackToProjectCampWebpage"
-                style="
-                  text-align: center;
-                  font-weight: bold;
-                  padding: 10px;
-                  border: 5px double orange;
-                  color: white;
-                  border-radius: 15px;
-                "
-                onclick="goBackToTheProjectCampWebpage()"
-              >
-                Go Back To The Project Camp Webpage
-              </button>
-            <br />  <!-- intentional space -->
             <p style="text-align: center">
               <button
                 id="submitWeatherApiInformation"
@@ -107,8 +91,40 @@
                 Get 5-Day Weather Forecast For The User-Specified Coordinates (if any) At Above
               </button>
             </p>
-
+            <br />  <!-- intentional space -->
+            <br />  <!-- intentional space -->
+            <p style="text-align: center">
+              <button
+                id="goBackToProjectCampWebpage"
+                style="
+                  text-align: center;
+                  font-weight: bold;
+                  padding: 10px;
+                  border: 5px double orange;
+                  color: white;
+                  border-radius: 15px;
+                "
+                onclick="goBackToTheProjectCampWebpage()"
+              >
+                Go Back To The Project Camp Webpage
+              </button>
             </p>
+            <br />  <!-- intentional space -->
+            <br />  <!-- intentional space -->
+            </p>
+              <!-- /////////////////////////////////////////////////////////////////////////////////
+                possible space for a new h1 section that is for a "Supplies" button section for linking to 
+                some sporting goods supply store[s] and a hardware store; for a process for a button for 
+                Scott's or Logan's "Notes -- Planning Page" enhancement feature process for the buttons of
+                the record navigation area
+                   ///////////////////////////////////////////////////////////////////////////////// -->
+
+              <!-- /////////////////////////////////////////////////////////////////////////////////
+                possible space for a new h1 section that is for a "Notes" textarea and button section for 
+                entering/saving/loading some campsite trip notes; for a button for Scott's or Logan's 
+                "Notes -- Record Save" enhancement feature process for the buttons of the record navigation
+                area
+                   ///////////////////////////////////////////////////////////////////////////////// -->
           </div>
         </div>
       </div>
@@ -123,6 +139,33 @@
 
 <!-- Local JavaScript code process -->
 <script>
+
+
+//////////////////////////////////////////////////////
+//
+// a process for a button for Scott's or Logan's "Notes -- Planning Page" enhancement feature process for the buttons
+// of the record navigation area
+// <code >
+// ...
+//
+//////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////
+//
+// for a button for Scott's or Logan's "Notes -- Record Save" enhancement feature process for the buttons of the  
+// record navigation area
+// <code (based on the other button sections)>
+// ...
+//
+//////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////
+//
+// Todd's Weather process code
+//
+//
 
 
 // a section that is to be run for page/variable/data initialization upon page load
@@ -235,6 +278,8 @@ campsiteLatitude = document.getElementById("campsiteLocationLatitude").value;
 campsiteLongitude = document.getElementById("campsiteLocationLongitude").value;
   // enhancement: allow on-change user entry event; instead of only auto-import of coordinate information
 //
+// <-- FUTURE ENHANCEMENT: Add a search option that is based on city name (a parameter that the API allows for)
+//
 // Build the URL--including the necessary query parameters--that is required for obtaining the desired data
 // from the API system.
 var requestWeatherUrlBase = "https://api.openweathermap.org/data/2.5/forecast";
@@ -262,6 +307,11 @@ fetch(requestUrl)
 }) .then(function(data){
 campsiteWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
 console.log(data);
+// ** NOTE/IMPORTANT: **
+// All of the code/process that is in this fetch-process-response section is in this section specifically because
+// the running of the code is time-dependent in that is MUST be run ONLY AFTER when the fetch response data
+// has been successfully and fully received by this program. 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Save to memory for later retrieval and accessing the array variable that holds the entire list of campsite weather
 // data records that were retrieved during the current campsite weather search.
 var campsiteWeatherFetchResponseDataRawObject = data; 
@@ -327,31 +377,44 @@ if (anErrorConditionExists == false) {
   for (recordCounterProcess = 0; recordCounterProcess < 39; recordCounterProcess++) { 
     // include for display only the 6:00am record and the 12:00pm record and the 6:00pm record
     //window.alert(recordDayCounter);
-      if ((recordCounterTime == 0) || (recordCounterTime == 2) || (recordCounterTime ==  4)) {
+      //if ((recordCounterTime == 0) || (recordCounterTime == 2) || (recordCounterTime ==  4)) {
         // alternate: ((recordCounterTime == 1) || (recordCounterTime == 3) || (recordCounterTime ==  5))
-      the5DayForecast = the5DayForecast + 
-      location + "\n" + 
-      "=================================" + "\n" + 
-      "DAY " + recordDayCounter + " FORECAST FOR" + "\n" + 
-      "MORNING-MIDDAY-EVENING WEATHER:" + "\n" + 
-      "for Date: " + basePath[recordCounterProcess].dt_txt + "\n" + 
-      "Temperature: " + basePath[recordCounterProcess].main.temp + "F" + "\n" + 
-      "Temperature-Minimum: " + basePath[recordCounterProcess].main.temp_min + "F" + "\n" + 
-      "Temperature-Maximum: " + basePath[recordCounterProcess].main.temp_max + "F" + "\n" + 
-      "Description1: " + basePath[recordCounterProcess].weather[0].main + "\n" + 
-      "Description2: " + basePath[recordCounterProcess].weather[0].description + "\n" + 
-      "Clouds: " + basePath[recordCounterProcess].clouds.all + "%" + "\n" + 
-      "Wind: " + basePath[recordCounterProcess].wind.speed + " MPH" + "\n" + 
-      "Visibility: " + basePath[recordCounterProcess].visibility + " Yards" + "\n" + 
-      "Humidity: " + basePath[recordCounterProcess].main.humidity + "%" + "\n" +
-      "Pressure: " + basePath[recordCounterProcess].main.pressure + " hPa" + "\n" + 
-      "Graphics Icon File: " + basePath[recordCounterProcess].weather[0].icon + "\n" + 
-      "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
-      "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
-      "=================================" + "\n" + 
-      "\n" + 
-      "\n";
-    }
+        // an experimented-with search-reduction method that would exclude certain time/weather data that
+        // was not applicable to the trip (such as very early and very late in the day) but the API data
+        // seems to be based on the exact current time of information download and therefore the API 40
+        // data-sets shuffle as time passes and therefore the isolation data-set numbers also change and 
+        // cannot easily be isolated without tediously evaluating the time component of each time data
+        // element
+      if ((((basePath[recordCounterProcess].dt_txt).indexOf("06:00:00")) >= 0) || 
+        (((basePath[recordCounterProcess].dt_txt).indexOf("12:00:00")) >= 0) || 
+        (((basePath[recordCounterProcess].dt_txt).indexOf("18:00:00")) >= 0)) {
+        //window.alert(basePath[recordCounterProcess].dt_txt);
+        the5DayForecast = the5DayForecast + 
+        location + "\n" + 
+        "=================================" + "\n" + 
+        //"DAY " + recordDayCounter + " FORECAST FOR" + "\n" + 
+        "MORNING-MIDDAY-EVENING TIME" + "\n" + 
+        "WEATHER FORECAST INFORMATION:" + "\n" + 
+        "for Date/Time: " + basePath[recordCounterProcess].dt_txt + "\n" + 
+        "---------------------------------------------------------" + "\n" + 
+        "Temperature: " + basePath[recordCounterProcess].main.temp + "F" + "\n" + 
+        "Temperature-Minimum: " + basePath[recordCounterProcess].main.temp_min + "F" + "\n" + 
+        "Temperature-Maximum: " + basePath[recordCounterProcess].main.temp_max + "F" + "\n" + 
+        "Description1: " + basePath[recordCounterProcess].weather[0].main + "\n" + 
+        "Description2: " + basePath[recordCounterProcess].weather[0].description + "\n" + 
+        "Clouds: " + basePath[recordCounterProcess].clouds.all + "%" + "\n" + 
+        "Wind: " + basePath[recordCounterProcess].wind.speed + " MPH" + "\n" + 
+        "Visibility: " + basePath[recordCounterProcess].visibility + " Yards" + "\n" + 
+        "Humidity: " + basePath[recordCounterProcess].main.humidity + "%" + "\n" +
+        "Pressure: " + basePath[recordCounterProcess].main.pressure + " hPa" + "\n" + 
+        "Graphics Icon File: " + basePath[recordCounterProcess].weather[0].icon + "\n" + 
+        "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
+        "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
+        "=================================" + "\n" + 
+        "\n" + 
+        "\n";
+      }  // the end-brace that is for the activate string-search data-reduction/isolation "for" loop that is at above
+    //}  // the end-brace that is for the commented-out data-reduction/isolation "for" loop that is at above
     if (recordCounterTime == 7) {
       // to the next day group record of 8 3-hour-span weather records for the involved day
       // other fun related math: Math.ceil((recordDayCounter + 1) / 8); (recordCounterProcess % 8 == 0) {  /
@@ -401,6 +464,14 @@ else {
 }  // END: "anErrorConditionExists" if-else
 });  // END: fetch-response data-then
 }  // END: "getCampsiteWeatherForecastAPI" function
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//
+//
+// END: Todd's Weather process code
+//
+//////////////////////////////////////////////////////
 
 
 </script>

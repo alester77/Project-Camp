@@ -314,6 +314,16 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
   // for Todd's weather forecast feature
   if (passedProcessMode == "Weather") {
     location.replace("./weather.html");  //  the URL of the Campsite Weather feature sub-webpage
+  ///////////////////////////////////////////////
+  // for Scott's or Logan's notes planning page enhancement feature process
+  // ...
+  ///////////////////////////////////////////////
+  // for a button for Scott's or Logan's notes-save enhancement feature process   
+  // ...
+  // for the desired/applicable description information of the current campsite information
+  // <campsite array reference statements>
+  // <localStorage statements>
+  ///////////////////////////////////////////////
   }
 }
 
@@ -747,7 +757,7 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.style.color = "white";
       newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
       newCampsiteRecordSeparatorSection.appendChild(newCampsiteRecordSeparatorSectionButton);
-      // Event Listener/Handler for the "displayCampsiteLocationOnMapButton" Button of the selected campsite.
+      // Event Listener/Handler for the "displayCampsiteLocationOnMapButton" button of the selected campsite.
       newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
         // console.log("selected campsite record index: " + this.id);  // the record array ID; not campsite ID
         // console.log(campsitesPrimaryInformation[this.id][6]); // "campsiteLatitude"
@@ -770,13 +780,12 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.style.color = "white";
       newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
       newCampsiteRecordSeparatorSection.appendChild(newCampsiteRecordSeparatorSectionButton);
-      // Event Listener/Handler for the "displayCampsiteWeatherForecastButton" Button of the selected campsite.
+      // Event Listener/Handler for the "displayCampsiteWeatherForecastButton" button of the selected campsite.
       newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
         setIdOfCurrentCampsiteRecordSelection(this.id, "Weather");
       });
       //////////////////////////////////////////////////////
-      // for a button for Max's Reservation feature process
-      // for the buttons of the record navigation area
+      // for a button for Max's Reservation feature process for the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
       newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // displayCampsiteReservationButton
       newCampsiteRecordSeparatorSectionButton.innerHTML = "Make a Reservation for this Campsite";
@@ -790,10 +799,28 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordSeparatorSectionButton.style.color = "white";
       newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
       newCampsiteRecordSeparatorSection.appendChild(newCampsiteRecordSeparatorSectionButton);
-      // Event Listener/Handler for the "reservation page" Button of the selected campsite.
+      // Event Listener/Handler for the "displayCampsiteReservationButton" button of the selected campsite.
       newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
         setIdOfCurrentCampsiteRecordSelection(this.id, "Reservation");
       });
+      //////////////////////////////////////////////////////
+      // for a button for Scott's or Logan's "Notes -- Planning Page" enhancement feature process for the buttons of 
+      // of the record navigation area
+      // <code (based on the other button sections)>
+      // ...
+      //newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
+      //  possible extra eventServiceFunction(this.id, "Notes") for extra processing;
+      //  or simply a window.replace("<URL>\<path>") screen change
+      //});
+      //////////////////////////////////////////////////////
+      // for a button for Scott's or Logan's "Notes -- Record Save" enhancement feature process for the buttons of the  
+      // record navigation area
+      // <code (based on the other button sections)>
+      // ...
+      //newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
+      //  possible extra eventServiceFunction(this.id, "Notes") for extra processing;
+      //  or simply a window.replace("<URL>\<path>") screen change
+      //}); 
       //////////////////////////////////////////////////////
       // the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");

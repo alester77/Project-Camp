@@ -116,14 +116,16 @@
                 possible space for a new h1 section that is for a "Supplies" button section for linking to 
                 some sporting goods supply store[s] and a hardware store; for a process for a button for 
                 Scott's or Logan's "Notes -- Planning Page" enhancement feature process for the buttons of
-                the record navigation area
+                the record navigation area; and this section could also have a green separator banner; 
+                and this section could also include a row of 3 or 4 or 5 small white div boxes that could
+                be placeholders for advertisements (to show a common reality of web apps)
                    ///////////////////////////////////////////////////////////////////////////////// -->
 
               <!-- /////////////////////////////////////////////////////////////////////////////////
                 possible space for a new h1 section that is for a "Notes" textarea and button section for 
                 entering/saving/loading some campsite trip notes; for a button for Scott's or Logan's 
                 "Notes -- Record Save" enhancement feature process for the buttons of the record navigation
-                area
+                area; and this section could also have a green separator banner
                    ///////////////////////////////////////////////////////////////////////////////// -->
           </div>
         </div>
@@ -143,9 +145,10 @@
 
 //////////////////////////////////////////////////////
 //
-// a process for a button for Scott's or Logan's "Notes -- Planning Page" enhancement feature process for the buttons
-// of the record navigation area
-// <code >
+// a section for code for a process for a button for Scott's or Logan's "Notes -- Planning Page" enhancement
+// feature process for the buttons of the record navigation area
+//
+// <code>
 // ...
 //
 //////////////////////////////////////////////////////
@@ -153,9 +156,10 @@
 
 //////////////////////////////////////////////////////
 //
-// for a button for Scott's or Logan's "Notes -- Record Save" enhancement feature process for the buttons of the  
-// record navigation area
-// <code (based on the other button sections)>
+// a section for code for a button for Scott's or Logan's "Notes -- Record Save" enhancement feature process 
+// for the buttons of the record navigation area
+// 
+// <code>
 // ...
 //
 //////////////////////////////////////////////////////
@@ -307,11 +311,12 @@ fetch(requestUrl)
 }) .then(function(data){
 campsiteWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
 console.log(data);
+//
 // ** NOTE/IMPORTANT: **
 // All of the code/process that is in this fetch-process-response section is in this section specifically because
 // the running of the code is time-dependent in that is MUST be run ONLY AFTER when the fetch response data
 // has been successfully and fully received by this program. 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Save to memory for later retrieval and accessing the array variable that holds the entire list of campsite weather
 // data records that were retrieved during the current campsite weather search.
 var campsiteWeatherFetchResponseDataRawObject = data; 
@@ -464,7 +469,8 @@ else {
 }  // END: "anErrorConditionExists" if-else
 });  // END: fetch-response data-then
 }  // END: "getCampsiteWeatherForecastAPI" function
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// END: fetch-process-response section
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //

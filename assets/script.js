@@ -528,6 +528,11 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
         }
       return response.json();
   }) .then(function(data){
+    // ** NOTE/IMPORTANT: **
+    // All of the code/process that is in this fetch-process-response section is in this section specifically 
+    // because the running of the code is time-dependent in that is MUST be run ONLY AFTER when the fetch response
+    // data has been successfully and fully received by this program. 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Set/Display a status to indicate about a possible processing delay.
     applicationProcessStatus = "STATUS: **...API DATABASE RECORD QUERY PROCESSING IN-PROGRESS...**";
     document.getElementById("campsiteRecordListProcessStatusDisplay").value = applicationProcessStatus;
@@ -889,7 +894,10 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
   });
   //
   return; 
-}
+} 
+//
+// END: fetch-process-response section
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //

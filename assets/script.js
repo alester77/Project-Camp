@@ -953,3 +953,7 @@ if(localStorage.getItem("reservation") === null){
 } else { document.getElementById("reservation").innerHTML = localStorage.getItem("reservation")}
 // END: Reservation process
 //////////////////////
+
+
+
+

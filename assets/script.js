@@ -266,7 +266,8 @@ function GenerateNewCampsiteListProcessing() {
 
 
 // a supplemental service function for the "Display This Campsite Location On The Map" Button
-function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, passedProcessMode) {
+function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, passedProcessMode, 
+    passedAdditionalProcessingInformation) {
   // a global-available service function that is for the "Display This Campsite Location On The Map" button
   // of the campsite record navigation area;
   newCampsiteRecordIsSelected = true;
@@ -314,17 +315,45 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
   // for Todd's weather forecast feature
   if (passedProcessMode == "Weather") {
     location.replace("./weather.html");  //  the URL of the Campsite Weather feature sub-webpage
-  ///////////////////////////////////////////////
-  // for Scott's or Logan's notes planning page enhancement feature process
-  // ...
-  ///////////////////////////////////////////////
-  // for a button for Scott's or Logan's notes-save enhancement feature process   
-  // ...
-  // for the desired/applicable description information of the current campsite information
-  // <campsite array reference statements>
-  // <localStorage statements>
-  ///////////////////////////////////////////////
   }
+  ///////////////////////////////////////////////
+  // for a button for Scott's Camping Trip Supplies planning page enhancement feature process
+  //if (passedProcessMode == "Supplies") {
+  //  location.replace("./weather.html");  //  the URL of the Campsite Planning (also Weather) feature sub-webpage
+  //}
+  ///////////////////////////////////////////////
+  // for a button for Logan's Campsite Notes enter/save/load enhancement feature process   
+  // 
+  if (passedProcessMode == "Notes") {
+    // Load any existing camping trip notes.
+    var loadedCampingTripNotes = JSON.parse(localStorage.getItem("ProjectCampCampingTripNotes"));
+    if (loadedCampingTripNotes == null) {
+      loadedCampingTripNotes = "";
+    }
+    // Save as new notes the information that is in the current selected campsite record.
+    var additionalSelectedCampingNotes = 
+    "================================" + "\n" + 
+    "\n" + 
+    "CAMPSITE NOTE (SAVE-DATE: " + (new Date()) + ")" + "\n" + 
+    "Database ID Number: " + theCurrentSelectedCampsiteRecordInformation[0] +  "\n" + 
+    "Name: " + theCurrentSelectedCampsiteRecordInformation[1] +  "\n" + 
+    "Phone Number: " + theCurrentSelectedCampsiteRecordInformation[2] +  "\n" + 
+    "Email Address: " + theCurrentSelectedCampsiteRecordInformation[4] +  "\n" + 
+    "Address: " + theCurrentSelectedCampsiteRecordInformation[3] +  "\n" + 
+    "Description: " + "\n" + 
+    passedAdditionalProcessingInformation + 
+    "\n" + 
+    "================================" + "\n" + 
+    "\n" + 
+    "\n";
+    var newNotesProcessing = loadedCampingTripNotes + additionalSelectedCampingNotes;
+    localStorage.setItem("ProjectCampCampingTripNotes", JSON.stringify(newNotesProcessing));
+    window.alert("The selected campsite notes information has been saved to the \"Camping Trip Planning Notes\" section.");
+    // Display the Notes section of the application.
+    location.replace("./weather.html#campingTripNotesDisplayArea");  
+      //  the URL of the Campsite Planning (also Weather) feature sub-webpage
+  }
+  ///////////////////////////////////////////////
 }
 
 
@@ -610,6 +639,7 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordContent.className = "campsiteRecordContent";
       newCampsiteRecordContent.innerHTML = "<p>" + "&nbsp" + "</p>";
       campsiteRecordObjectFieldProcessing = (campsiteFetchResponseData[fetchDataLoopIndex]).FacilityDescription;
+      processingFacilityDescription = (campsiteFetchResponseData[fetchDataLoopIndex]).FacilityDescription;
       //console.log("Image Error: " + campsiteRecordObjectFieldProcessing);
       // MINOR CORRECTION TO IMPORT-DATA ERROR (BROKEN/404 <IMG> ELEMENTS IN THE DESCRIPTION FIELD):
       // Step 1: Start_index = getIndex "<img";
@@ -660,6 +690,7 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
       newCampsiteRecordContent = document.createElement("div");
       newCampsiteRecordContent.className = "campsiteRecordContent";
       campsiteRecordObjectFieldProcessing = (campsiteFetchResponseData[fetchDataLoopIndex]).FacilityDirections;
+      var processingFacilityDirections = (campsiteFetchResponseData[fetchDataLoopIndex]).FacilityDirections;
       newCampsiteRecordContent.innerHTML = "<p>" + "Other Direction Information (if any): " + campsiteRecordObjectFieldProcessing + "</p>";
       newCampsiteRecord.appendChild(newCampsiteRecordContent);
       // a section for the other miscellaneous information (if any) about the campsite record
@@ -809,23 +840,31 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
         setIdOfCurrentCampsiteRecordSelection(this.id, "Reservation");
       });
       //////////////////////////////////////////////////////
-      // for a button for Scott's or Logan's "Notes -- Planning Page" enhancement feature process for the buttons of 
-      // of the record navigation area
-      // <code (based on the other button sections)>
-      // ...
-      //newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
-      //  possible extra eventServiceFunction(this.id, "Notes") for extra processing;
-      //  or simply a window.replace("<URL>\<path>") screen change
-      //});
-      //////////////////////////////////////////////////////
-      // for a button for Scott's or Logan's "Notes -- Record Save" enhancement feature process for the buttons of the  
-      // record navigation area
-      // <code (based on the other button sections)>
-      // ...
-      //newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
-      //  possible extra eventServiceFunction(this.id, "Notes") for extra processing;
-      //  or simply a window.replace("<URL>\<path>") screen change
+      // for a possible button for Scott's "Camping Trip Supplies Planning" enhancement feature process for the 
+      // buttons of the record navigation area
+      // <code>
       //}); 
+      //////////////////////////////////////////////////////
+      // for a button for Logan's "Notes -- Record Save" enhancement feature process for the buttons of the  
+      // record navigation area
+      newCampsiteRecordSeparatorSectionButton = document.createElement("button");
+      newCampsiteRecordSeparatorSectionButton.id = fetchDataLoopIndex;  // SaveCampsiteInformationToNotesButton
+      newCampsiteRecordSeparatorSectionButton.innerHTML = "Save This Campsite Information To My Notes";
+      newCampsiteRecordSeparatorSectionButton.style.width = "auto";
+      newCampsiteRecordSeparatorSectionButton.style.height = "auto";
+      newCampsiteRecordSeparatorSectionButton.style.marginLeft = "50px";
+      newCampsiteRecordSeparatorSectionButton.style.marginRight = "50px";
+      newCampsiteRecordSeparatorSectionButton.style.marginBottom = "10px";
+      newCampsiteRecordSeparatorSectionButton.style.padding = "10px";
+      newCampsiteRecordSeparatorSectionButton.style.verticalAlign = "middle";
+      newCampsiteRecordSeparatorSectionButton.style.color = "white";
+      newCampsiteRecordSeparatorSectionButton.style.backgroundColor = "darkgray";
+      newCampsiteRecordSeparatorSection.appendChild(newCampsiteRecordSeparatorSectionButton);
+      // Event Listener/Handler for the "SaveCampsiteDescriptionToNotesButton" button of the selected campsite.
+      newCampsiteRecordSeparatorSectionButton.addEventListener("click", function() {
+        var processingCampsiteDescriptionText = processingFacilityDescription + "\n" + processingFacilityDirections;
+        setIdOfCurrentCampsiteRecordSelection(this.id, "Notes", processingCampsiteDescriptionText);
+      });
       //////////////////////////////////////////////////////
       // the buttons of the record navigation area
       newCampsiteRecordSeparatorSectionButton = document.createElement("button");
@@ -906,8 +945,11 @@ function goFetchAndProcessAPIResponseCampsiteInformation(passedRequestUrlApi) {
 //
 ///////////////////////////////////////////////
 
+
 //////////////////////
 // Code for displaying reservation
 if(localStorage.getItem("reservation") === null){
   document.getElementById("reservation").innerHTML = "You have no reservations booked at this time."
 } else { document.getElementById("reservation").innerHTML = localStorage.getItem("reservation")}
+// END: Reservation process
+//////////////////////

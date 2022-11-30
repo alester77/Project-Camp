@@ -14,67 +14,87 @@
     <title>OpenWeather API Interface Resources</title>
   </head>
 
+
   <body class="weather-body">
 
     <!-- -->
     <header></header>
     <div class="mainPageContainer">
-      <h1 style="text-align: center; -webkit-text-stroke: 2px black">
+      <h1 id="campingTripPlanning" style="
+        text-align: center;
+        -webkit-text-stroke: 2px black;">
         🌞Camping Trip Planning🌞
       </h1>
+
+      <!-- START: Todd's Weather section ///////////////////////////////////////////////////////////////////// -->
+      <!-- -->
+      <!-- -->
       <div class="sectionContainer">
         <div class="sectionHeader">
-          <br />  <!-- intentional space -->          
-          <h2 style="text-align: center; font-size: 25px; margin-top: 15px;">Weather Forecast</h2>
+          <br />  <!-- intentional space -->   
+          <h2 style="
+            text-align: center;
+            font-size: 25px;
+            margin-top: 15px;">
+            Weather Forecast
+          </h2>
           <br />  <!-- intentional space -->
           <br />  <!-- intentional space -->
-          <p
-          id="weather-note"
-          style="font-weight: bolder; color: white; text-align: center"
-        >
-          Latitude:&nbsp<input id="campsiteLocationLatitude" style="width: 15ch"/>
-          <!-- default: value="39.742043" for Denver -->
-          &nbsp&nbsp&nbsp&nbsp&nbsp <!-- non-breaking space separator -->
-          Longitude:&nbsp<input id="campsiteLocationLongitude" style="width: 15ch"/>
-          <!-- default: value="-104.991531" for Denver -->
-        </p>
-        <p
-          id="weather-note"
-          style="font-weight: bolder; color: white; text-align: center"
-        >
-          <span style="color: blue">Note:</span> The forecast search is based 
-          on campsite latitude and longitude coordinates which auto-import from
-          the Project Camp website application, but you can enter your own
-          search coordinates (if known) for other location searches.
-        </p>
-          <br />  <!-- intentional space -->
-          <div id="buttonArea" style="align-items: center">
-          <br />  <!-- intentional space -->
-          </div>
-          <div
-            id="displaySectionForCampsiteWeatherInformation"
-            style="display: flex; justify-content: center; margin: -15px"
-          >
-            <div>
-              <textarea
-                id="displayAreaForCampsiteWeatherInformation"
-                readonly
-                style="
-
-                  width: 425px;
-                  height: 350px;
-                  padding: 30px;
-                  margin-bottom: 20px;
-                  background-color: white;
-                  color: black;
-                  border: 10px double darkblue;
-                "
-              >
-              </textarea>
-            </div>
-          </div>
+          <p id="weather-note"
+            style="
+              font-weight: bolder;
+              color: white;
+              text-align: center;">
+            Latitude:&nbsp<input id="campsiteLocationLatitude" style="width: 15ch"/>
+            <!-- default: value="39.742043" for Denver -->
+            &nbsp&nbsp&nbsp&nbsp&nbsp <!-- non-breaking space separator -->
+            Longitude:&nbsp<input id="campsiteLocationLongitude" style="width: 15ch"/>
+            <!-- default: value="-104.991531" for Denver -->
+          </p>
+          <p id="weather-note"
+            style="
+              font-weight: bolder;
+              color: white;
+              text-align: center;">
+            <span style="
+              color: blue">
+              Note:
+            </span>
+            The forecast search is based on campsite latitude and longitude coordinates which 
+            auto-import from the Project Camp website application, but you can enter your own search 
+            coordinates (if known) for other location searches.
+          </p>
+        </div>
+        <br />  <!-- intentional space -->
+        <div
+          id="displaySectionForCampsiteWeatherInformation"
+          style="
+            display: flex;
+            justify-content: center;
+            margin: -15px;">
           <div>
-            <p style="text-align: center">
+            <textarea
+              id="displayAreaForCampsiteWeatherInformation"
+              readonly
+              style="
+                width: 425px;
+                height: 350px;
+                padding: 30px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                background-color: white;
+                color: black;
+                border: 10px double darkblue;">
+            </textarea>
+          </div>
+        </div>
+        <div id="buttonArea" 
+          style=
+            "align-items: center">
+          <br />  <!-- intentional space -->
+          <div>
+            <p style=
+              "text-align: center;">
               <button
                 id="submitWeatherApiInformation"
                 style="
@@ -84,10 +104,8 @@
                   border: 5px double orange;
                   color: white;
                   border-radius: 15px;
-                  margin: 10px;
-                "
-                onclick="getCampsiteWeatherForecastAPI()"
-              >
+                  margin: 10px;"
+                onclick="getCampsiteWeatherForecastAPI()">
                 Get 5-Day Weather Forecast For The User-Specified Coordinates (if any) At Above
               </button>
             </p>
@@ -102,37 +120,129 @@
                   padding: 10px;
                   border: 5px double orange;
                   color: white;
-                  border-radius: 15px;
-                "
-                onclick="goBackToTheProjectCampWebpage()"
-              >
+                  border-radius: 15px;"
+                onclick="goBackToTheProjectCampWebpage()">
                 Go Back To The Project Camp Webpage
               </button>
             </p>
-            <br />  <!-- intentional space -->
-            <br />  <!-- intentional space -->
-            </p>
-              <!-- /////////////////////////////////////////////////////////////////////////////////
-                possible space for a new h1 section that is for a "Supplies" button section for linking to 
-                some sporting goods supply store[s] and a hardware store; for a process for a button for 
-                Scott's or Logan's "Notes -- Planning Page" enhancement feature process for the buttons of
-                the record navigation area; and this section could also have a green separator banner; 
-                and this section could also include a row of 3 or 4 or 5 small white div boxes that could
-                be placeholders for advertisements (to show a common reality of web apps)
-                   ///////////////////////////////////////////////////////////////////////////////// -->
-
-              <!-- /////////////////////////////////////////////////////////////////////////////////
-                possible space for a new h1 section that is for a "Notes" textarea and button section for 
-                entering/saving/loading some campsite trip notes; for a button for Scott's or Logan's 
-                "Notes -- Record Save" enhancement feature process for the buttons of the record navigation
-                area; and this section could also have a green separator banner
-                   ///////////////////////////////////////////////////////////////////////////////// -->
           </div>
         </div>
       </div>
-    </div>
-    <br />
-    <br />
+      <br />  <!-- intentional space -->
+      <br />  <!-- intentional space -->
+      <!-- -->
+      <!-- -->
+      <!-- END: Todd's Weather section /////////////////////////////////////////////////////////////////////// -->
+
+      <!-- START: Logan's Notes Section //////////////////////////////////////////////////////////////////////
+        space for a new h2-type section that is for a "Notes" text area and button section for 
+        entering/saving/loading some campsite trip notes; for a button for Logan's 
+        "Notes -- Record Save" enhancement feature process for the buttons of the record navigation area; and 
+        this section could also have a green separator banner
+        ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+      <div class="sectionContainer">
+        <div class="sectionHeader"
+          style="
+            overflow: auto;">
+          <br />  <!-- intentional space -->
+            <p id="weather-note"
+              style="
+                font-weight: bolder;
+                color: darkblue;
+                text-align: center;
+                width: 80%;
+                border: 5px solid darkblue">
+              <span
+                style="
+                  text-align: center;
+                  font-size: 25px;">
+              Camping Trip Notes
+              </span>
+            </p>
+          <br />  <!-- intentional space -->
+          <br />  <!-- intentional space -->
+        </div>
+        <div
+          id="displaySectionForCampingTripNotes"
+          style="
+            display: flex;
+            justify-content: center;
+            margin: -15px;">
+          <div
+              style = "width : 80%">
+            <textarea
+              id="campingTripNotesDisplayArea"
+              style="
+                width: 100%;
+                height: 600px;
+                padding: 20px;
+                margin-bottom: 20px;
+                background-color: white;
+                color: black;
+                border: 10px double darkblue;
+                overflow: auto;">
+            </textarea>
+          </div>
+        </div>
+        <div id="buttonArea" 
+          style=
+            "align-items: center;">
+          <br />  <!-- intentional space -->
+          <div>
+            <p style=
+              "text-align: center;">
+              <button
+                id="saveCampingTripNotes"
+                style="
+                  text-align: center;
+                  font-weight: bold;
+                  padding: 10px;
+                  margin: 30px;
+                  border: 5px double orange;
+                  color: white;
+                  background-color: forestgreen;
+                  border-radius: 15px;
+                  margin: 10px;"
+                onclick="saveCampingTripNotesTextArea()">
+                Save Camping Trip Notes
+              </button>
+              <!-- ENHANCEMENT IDEA: Add a "Cancel And Re-Load Previous Notes" button. -->
+              <button
+                id="goBackToProjectCampWebpageFromNotes"
+                style="
+                  text-align: center;
+                  font-weight: bold;
+                  padding: 10px;
+                  margin: 30px;
+                  border: 5px double orange;
+                  color: white;
+                  background-color: forestgreen;
+                  border-radius: 15px;"
+                onclick="goBackToTheProjectCampWebpageFromNotes()">
+                Go Back To The Project Camp Webpage
+              </button>
+              <button
+                id="goToTopOfThisWebpage"
+                style="
+                  text-align: center;
+                  font-weight: bold;
+                  padding: 10px;
+                  margin: 30px;
+                  border: 5px double orange;
+                  color: white;
+                  background-color: forestgreen;
+                  border-radius: 15px;"
+                onclick="goToTopOfThisWebpage()">
+                Go Up To The Top Of This Webpage
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <br />  <!-- intentional space -->  
+      <br />  <!-- intentional space -->  
+      <!-- END: Logan's Notes section //////////////////////////////////////////////////////////////////////// -->
+
 
     <footer style="display: none">
       <br />
@@ -145,22 +255,35 @@
 
 //////////////////////////////////////////////////////
 //
-// a section for code for a process for a button for Scott's or Logan's "Notes -- Planning Page" enhancement
-// feature process for the buttons of the record navigation area
+// a section for code for function processes for the text area and the buttons of Logan's "Notes" enhancement 
+// feature process; related to the "Notes" button of the record navigation area
 //
-// <code>
-// ...
-//
-//////////////////////////////////////////////////////
+// an automatic on-page-load initialization process function call 
+loadAnyExistingCampingTripNotes();
 
+function loadAnyExistingCampingTripNotes() {
+  var campingTripNotesArea = document.getElementById("campingTripNotesDisplayArea");
+  var loadedCampingTripNotes = JSON.parse(localStorage.getItem("ProjectCampCampingTripNotes"));
+  if (loadedCampingTripNotes != null) {
+    campingTripNotesArea.value = loadedCampingTripNotes;
+  }
+}
+function saveCampingTripNotesTextArea() {
+  var campingTripNotesArea = document.getElementById("campingTripNotesDisplayArea");
+  var currentCampingNotes = campingTripNotesArea.value;
+  localStorage.setItem("ProjectCampCampingTripNotes", JSON.stringify(currentCampingNotes));
+  window.alert("The current camping trip notes information has been saved.");
+}
+// ENHANCEMENT IDEA: Add a function process for "Cancel And Re-Load Previous Notes" button; per a call to the
+// "loadAnyExistingCampingTripNotes()" function".
 
-//////////////////////////////////////////////////////
-//
-// a section for code for a button for Scott's or Logan's "Notes -- Record Save" enhancement feature process 
-// for the buttons of the record navigation area
-// 
-// <code>
-// ...
+function goBackToTheProjectCampWebpageFromNotes() {
+  saveCampingTripNotesTextArea();
+  window.location.href = "./index.html";
+}
+function goToTopOfThisWebpage() {
+  window.scrollTo(0, 0);
+}
 //
 //////////////////////////////////////////////////////
 

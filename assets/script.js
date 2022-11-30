@@ -332,6 +332,7 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
     }
     // Save as new notes the information that is in the current selected campsite record.
     var additionalSelectedCampingNotes = 
+    "\n" +
     "================================" + "\n" + 
     "\n" + 
     "CAMPSITE NOTE (SAVE-DATE: " + (new Date()) + ")" + "\n" + 

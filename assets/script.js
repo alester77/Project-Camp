@@ -331,16 +331,17 @@ function setIdOfCurrentCampsiteRecordSelection(passedCampsiteRecordIDNumber, pas
       loadedCampingTripNotes = "";
     }
     // Save as new notes the information that is in the current selected campsite record.
+    var currentDateTimeStamp = (new Date()).toString();
     var additionalSelectedCampingNotes = 
     "\n" +
     "================================" + "\n" + 
     "\n" + 
-    "CAMPSITE NOTE (SAVE-DATE: " + (new Date()) + ")" + "\n" + 
+    "CAMPSITE NOTE (SAVE-DATE: " + currentDateTimeStamp + ")" + "\n" + 
     "Database ID Number: " + theCurrentSelectedCampsiteRecordInformation[0] +  "\n" + 
     "Name: " + theCurrentSelectedCampsiteRecordInformation[1] +  "\n" + 
-    "Phone Number: " + theCurrentSelectedCampsiteRecordInformation[2] +  "\n" + 
-    "Email Address: " + theCurrentSelectedCampsiteRecordInformation[4] +  "\n" + 
-    "Address: " + theCurrentSelectedCampsiteRecordInformation[3] +  "\n" + 
+    "Phone Number: " + theCurrentSelectedCampsiteRecordInformation[3] +  "\n" + 
+    "Email Address: " + theCurrentSelectedCampsiteRecordInformation[5] +  "\n" + 
+    "Address: " + theCurrentSelectedCampsiteRecordInformation[4] +  "\n" + 
     "Description: " + "\n" + 
     passedAdditionalProcessingInformation + 
     "\n" + 
@@ -515,6 +516,7 @@ function displayMainCampsiteRecordsDisplayAreaNavigationBar() {
   newMainRecordsListNavigationBarAreaField.style.paddingLeft = "5px";
   newMainRecordsListNavigationBarAreaField.style.paddingRight = "5px";
   newMainRecordsListNavigationBarAreaField.style.backgroundColor = "white";
+  newMainRecordsListNavigationBarAreaField.style.resize = "none";
   newMainRecordsListNavigationBarAreaField.setAttribute("overflow", "auto");
   newMainRecordsListNavigationBarArea.appendChild(newMainRecordsListNavigationBarAreaField);
   // the application status bar
@@ -529,6 +531,7 @@ function displayMainCampsiteRecordsDisplayAreaNavigationBar() {
   newMainRecordsListNavigationBarAreaField.style.textAlign = "center";
   newMainRecordsListNavigationBarAreaField.style.padding = "5px";
   newMainRecordsListNavigationBarAreaField.style.backgroundColor = "white";
+  newMainRecordsListNavigationBarAreaField.style.resize = "none";
   newMainRecordsListNavigationBarAreaField.setAttribute("overflow", "auto");
   newMainRecordsListNavigationBarArea.appendChild(newMainRecordsListNavigationBarAreaField);
   // Add an empty "campsiteRecordsList" display area/div to prime that dynamic record-list build process...which 
